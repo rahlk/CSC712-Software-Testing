@@ -9,7 +9,7 @@ def d2s(x):
   temp =time.mktime(time.strptime(str(x), "%Y-%m-%d %H:%M:%S"))
   return (time.time() - temp)/(3600*24)
 
-auth = dict(login='rahlk', password='nb20152dq')
+auth = dict(login='rahlk', password='xxxxxx')
 gh = Github(**auth)
 
 octocat_issues = gh.issues.list_by_repo('scikit-learn','scikit-learn',state="all")
