@@ -8,5 +8,5 @@
 + Use the following script
 
 ``` bash
-$ python getIssues.py > Reports.log
+$ python getIssues.py > Reports.csv
 ```
