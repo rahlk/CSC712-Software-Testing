@@ -32,18 +32,10 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=1,
-          extent=0.5,
-          fSelect=False,
-          Prune=False,
-          infoPrune=0.75):
-    self.pred = pred
-    self.extent = extent
-    self.fSelect = fSelect
-    self.Prune = Prune
-    self.infoPrune = infoPrune
+          reps=1):
+
     self.dataName = dataName
-    self.out, self.out_pred = [], []
+    self.out_pred = []
     self._smoteit = _smoteit
     self.train, self.test = self.categorize()
     self.reps = reps
@@ -86,62 +78,20 @@ class run():
                          tunings=self.tunedParams,
                          smoteit=True)
 
-      for predicted, row in zip(before, test_df._rows):
-        tmp = row.cells
-        tmp[-2] = predicted
-        if predicted > 0:
-          predRows.append(tmp)
-
-      predTest = clone(test_df, rows=predRows)
-
-      if predRows:
-        newTab = treatments2(
-            train=self.train[self._n],
-            test=self.test[self._n],
-            test_df=predTest,
-            extent=self.extent,
-            far=False,
-            smote=True,
-            resample=True,
-            infoPrune=self.infoPrune,
-            Prune=self.Prune).main()
-      else:
-        newTab = treatments2(
-            train=self.train[
-                self._n],
-            test=self.test[
-                self._n],
-            far=False,
-            smote=True,
-            resample=True,
-            extent=self.extent,
-            infoPrune=self.infoPrune,
-            Prune=self.Prune).main()
-
-      after = self.pred(train_DF, newTab,
-                        tunings=self.tunedParams,
-                        smoteit=True)
-
-#       set_trace()
       self.out_pred.append(_Abcd(before=actual, after=before))
-      delta = cliffs(lst1=Bugs(predTest), lst2=after).delta()
-      self.out.append(delta)
-    if self.extent == 0:
-      append = 'Base'
-    else:
-      if self.Prune:
-        append = str(
-            self.extent) + '_iP(' + str(
-            int(self.infoPrune * 100)) + r'%)' if not self.fSelect else str(
-            self.extent) + '_w_iP(' + str(
-            int(self.infoPrune * 100)) + r'%)'
-      else:
-        append = str(
-            self.extent) if not self.fSelect else str(
-            self.extent) + '_w'
 
-    self.out.insert(0, self.dataName + '_' + append)
-    self.out_pred.insert(0, self.dataName)
+    if self._smoteit:
+      if self._tuneit:
+        suffix = "_s+tune"
+      else:
+        suffix = "_s"
+    else:
+      if self._tuneit:
+        suffix = "_tune"
+      else:
+        suffix = ""
+
+    self.out_pred.insert(0, self.dataName + suffix)
     print(self.out)
 
 

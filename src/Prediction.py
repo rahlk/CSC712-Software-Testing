@@ -1,16 +1,18 @@
-from __future__ import division
-from pdb import set_trace
+#! /Users/rkrsn/miniconda/bin/python
+from __future__ import print_function, division
 from os import environ, getcwd
 import sys
+
+# Update PYTHONPATH
+cwd = getcwd()  # Current Directory
+axe = cwd + '/axe/'  # AXE
+pystat = cwd + '/pystats/'  # PySTAT
+sys.path.extend([axe, pystat, cwd])
+
 from scipy.stats.mstats import mode
 from scipy.spatial.distance import euclidean
 from numpy import mean
-# Update PYTHONPATH
-HOME = environ['HOME']
-axe = HOME + '/git/axe/axe/'  # AXE
-pystat = HOME + '/git/pystats/'  # PySTAT
-cwd = getcwd()  # Current Directory
-sys.path.extend([axe, pystat, cwd])
+
 from random import choice, uniform as rand
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import RandomForestClassifier

@@ -1,15 +1,23 @@
+#! /Users/rkrsn/miniconda/bin/python
+from __future__ import print_function, division
+from os import environ, getcwd
 import sys
-import os
-sys.path.append(os.environ['HOME'] + '/git/axe/axe')
-sys.path.insert(0, os.getcwd() + '/_imports')
+
+# Update PYTHONPATH
+cwd = getcwd()  # Current Directory
+axe = cwd + '/axe/'  # AXE
+pystat = cwd + '/pystats/'  # PySTAT
+where = cwd + '/_imports/'  # Where
+sys.path.extend([axe, pystat, cwd, where])
+
 from demos import *
 import sk
-# @UnresolvedImport
 from settings import *
 from settingsWhere import *
 from pdb import set_trace
 from abcd import _Abcd
 from Prediction import rforest, CART, Bugs, where2prd
+from methods1 import explore
 from methods1 import createTbl
 from random import uniform as rand, randint as randi, choice as any
 tree = treeings()
@@ -238,15 +246,15 @@ def tuner(model, data):
 if __name__ == '__main__':
   from timeit import time
   data = explore(dir='../Data/')[0][0]  # Only training data to tune.
-#  set_trace()
+#   set_trace()
   for m in [tuneCART]:
     t = time.time()
     mdl = m(data)
 #   _test(data)
     tunings = _de(m, data)
-    print tunings
-    print mdl.depen(tunings)
-    print time.time() - t
+    print(tunings)
+    print(mdl.depen(tunings))
+    print(time.time() - t)
 #   print _de()
 #  print main()
 #  import sk; xtile = sk.xtile
