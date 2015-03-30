@@ -4,26 +4,21 @@ from os import environ, getcwd
 import sys
 
 # Update PYTHONPATH
-HOME = environ['HOME']
-axe = HOME + '/git/axe/axe/'  # AXE
-pystat = HOME + '/git/pystats/'  # PySTAT
 cwd = getcwd()  # Current Directory
+axe = cwd + '/axe/'  # AXE
+pystat = cwd + '/pystats/'  # PySTAT
 sys.path.extend([axe, pystat, cwd])
 
 from Prediction import *
-from Planning import *
 from _imports import *
 from abcd import _Abcd
 from cliffsDelta import cliffs
-from contrastset import *
-from dectree import *
 from methods1 import *
 import numpy as np
 import pandas as pd
 from sk import rdivDemo
 from pdb import set_trace
 from dEvol import tuner
-from WHAT import treatments as treatments2
 from os import walk
 from demos import cmd
 
@@ -161,195 +156,6 @@ def _test(file):
       fSelect=False,
       Prune=False,
       infoPrune=None).go()
-
-#   """
-#   Mutation without Feature Selection
-#   """
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=False,
-#       Prune=False,
-#       infoPrune=None).go()
-#
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=False,
-#       Prune=False,
-#       infoPrune=None).go()
-#
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=False,
-#       Prune=False,
-#       infoPrune=None).go()
-#
-#   """
-#   Mutation with Feature Selection
-#   """
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=True,
-#       Prune=False,
-#       infoPrune=None).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=True,
-#       Prune=False,
-#       infoPrune=None).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=True,
-#       Prune=False,
-#       infoPrune=None).go()
-#   """
-#   Information Pruning with Feature Selection
-#   """
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.25).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.5).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.75).go()
-#
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.25).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.50).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.75).go()
-#
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.25).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.5).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=True,
-#       Prune=True,
-#       infoPrune=0.75).go()
-#
-#   """
-#   Information Pruning without Feature Selection
-#   """
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.25).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.5).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.25,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.75).go()
-#
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.25).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.50).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.50,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.75).go()
-#
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.25).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.5).go()
-#   R = run(
-#       dataName=file,
-#       extent=0.75,
-#       reps=12,
-#       fSelect=False,
-#       Prune=True,
-#       infoPrune=0.75).go()
 
 if __name__ == '__main__':
   eval(cmd())
