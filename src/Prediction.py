@@ -173,8 +173,8 @@ def CART(train, test, tunings=None, smoteit=True, duplicate=True):
   # set_trace()
   clf.fit(train_DF[features].astype('float32'), klass.astype('float32'))
   preds = clf.predict(test_DF[test_DF.columns[:-2]].astype('float32')).tolist()
-  with open("tree2.dot", 'w') as f:
-    f = tree.export_graphviz(clf, out_file=f)
+#   with open("tree2.dot", 'w') as f:
+#     f = tree.export_graphviz(clf, out_file=f)
   return preds
 
 
