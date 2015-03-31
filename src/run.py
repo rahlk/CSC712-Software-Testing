@@ -23,6 +23,7 @@ from os import walk
 from demos import cmd
 from latex import latex
 
+
 class run():
 
   def __init__(
@@ -83,42 +84,45 @@ class run():
 
     if self._smoteit:
       if self._tuneit:
-        suffix = "s, tune, "
+        suffix = "(SMOTE, Tune)"
       else:
-        suffix = ", s, "
+        suffix = "(SMOTE)"
     else:
       if self._tuneit:
-        suffix = ", tune, "
+        suffix = "(Tune)"
       else:
-        suffix = ", "
+        suffix = ""
 
-    self.out_pred.insert(0, self.dataName[:3] + suffix + str(self.pred.__doc__))
+    self.out_pred.insert(str(self.pred.__doc__) + Suffix)
     return self.out_pred
 
 
-def _test(isLatex = False):
-  tune = [False]#, True]
+def _test(isLatex=False):
+  tune = [False, True]
   smote = [True, False]
-  if isLatex: latex().preamble()
+  if isLatex:
+    latex().preamble()
   for file in ['ant', 'camel', 'ivy',
                'jedit', 'poi', 'log4j',
                'lucene', 'pbeans', 'velocity',
                'xalan', 'xerces']:
     E = []
-    if isLatex: latex().subsection(file)
+    if isLatex:
+      latex().subsection(file)
     for pred in [CART, rforest]:
       for t in tune:
         for s in smote:
           R = run(
-               pred=pred,
-               dataName=file,
-               _tuneit=t,
-               _smoteit=s).go()
+              pred=pred,
+              dataName=file,
+              _tuneit=t,
+              _smoteit=s).go()
           E.append(R)
-    
-    rdivDemo(E, isLatex=isLatex)
-    
 
-  
+    rdivDemo(E, isLatex=isLatex)
+    latex().postamble()
+  print("\end{document}")
+
+
 if __name__ == '__main__':
   eval(cmd())

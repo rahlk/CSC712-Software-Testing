@@ -114,7 +114,7 @@ def _where2pred():
 
 
 def rforest(train, test, tunings=None, smoteit=True, duplicate=True):
-  "    RF"
+  "RF "
   # Apply random forest Classifier to predict the number of bugs.
   if smoteit:
     train = SMOTE(train, atleast=50, atmost=101, resample=duplicate)
@@ -152,7 +152,7 @@ def _RF():
 
 
 def CART(train, test, tunings=None, smoteit=True, duplicate=True):
-  "  CART"
+  "CART "
   # Apply random forest Classifier to predict the number of bugs.
   if smoteit:
     train = SMOTE(train, atleast=50, atmost=101, resample=duplicate)

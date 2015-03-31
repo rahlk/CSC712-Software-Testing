@@ -1,14 +1,16 @@
 from __future__ import print_function
 
+
 class latex():
+
   def __init__(self):
     pass
 
   def preamble(self):
-        print(r"""\documentclass{article}
+    print(r"""\documentclass{article}
               \usepackage{colortbl}
               \usepackage{fullpage}
-              \usepackage{booktabs}                        
+              \usepackage{booktabs}
               \usepackage{bigstrut}
               \usepackage[table]{xcolor}
               \usepackage{picture}
@@ -18,8 +20,9 @@ class latex():
               """)
 
   def subsection(self, str):
-    print("\\subsection*{%s}"%(str))
+    print(
+        "\\begin{subtable}{0.5\\linewidth}\n\\caption{%s} \label{%s}" %
+        (str, str))
 
   def postamble(self):
-    print("\end{document}")
-
+    print("\end{subtable}\\[0.2cm]")
