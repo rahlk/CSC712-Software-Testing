@@ -21,7 +21,7 @@ from pdb import set_trace
 from dEvol import tuner
 from os import walk
 from demos import cmd
-
+from latex import latex
 
 class run():
 
@@ -32,11 +32,13 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=1):
+          reps=10):
 
     self.dataName = dataName
+    self.pred = pred
     self.out_pred = []
     self._smoteit = _smoteit
+    self._tuneit = _tuneit
     self.train, self.test = self.categorize()
     self.reps = reps
     self._n = _n
@@ -68,7 +70,6 @@ class run():
                 whereis()])]  # Train, Test
 
   def go(self):
-
     for _ in xrange(self.reps):
       predRows = []
       train_DF = createTbl(self.train[self._n], isBin=True)
@@ -76,36 +77,48 @@ class run():
       actual = Bugs(test_df)
       before = self.pred(train_DF, test_df,
                          tunings=self.tunedParams,
-                         smoteit=True)
+                         smoteit=self._smoteit)
 
-      self.out_pred.append(_Abcd(before=actual, after=before))
+      self.out_pred.append(_Abcd(before=actual, after=before)[-1])
 
     if self._smoteit:
       if self._tuneit:
-        suffix = "_s+tune"
+        suffix = "_s+tune_"
       else:
-        suffix = "_s"
+        suffix = "_s_"
     else:
       if self._tuneit:
-        suffix = "_tune"
+        suffix = "_tune_"
       else:
-        suffix = ""
+        suffix = "_"
 
-    self.out_pred.insert(0, self.dataName + suffix)
-    print(self.out)
+    self.out_pred.insert(0, self.dataName + suffix + str(self.pred.__doc__))
+    return self.out_pred
 
 
-def _test(file):
-  """
-  Baselining
-  """
-  R = run(
-      dataName=file,
-      extent=0.00,
-      reps=12,
-      fSelect=False,
-      Prune=False,
-      infoPrune=None).go()
+def _test(isLatex = False):
+  tune = [False]#, True]
+  smote = [True, False]
+  if isLatex: latex().preamble()
+  for file in ['ant', 'camel', 'ivy',
+               'jedit', 'poi', 'log4j',
+               'lucene', 'pbeans', 'velocity',
+               'xalan', 'xerces']:
+    E = []
+    if isLatex: latex().subsection(file)
+    for pred in [CART, rforest]:
+      for t in tune:
+        for s in smote:
+          R = run(
+               pred=pred,
+               dataName=file,
+               _tuneit=t,
+               _smoteit=s).go()
+          E.append(R)
+    
+    rdivDemo(E, isLatex=isLatex)
+    
 
+  
 if __name__ == '__main__':
   eval(cmd())

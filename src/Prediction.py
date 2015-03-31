@@ -113,11 +113,11 @@ def _where2pred():
   return _Abcd(before=actual, after=preds, show=False)[-1]
 
 
-def rforest(train, test, tunings=None, smoteit=True):
+def rforest(train, test, tunings=None, smoteit=True, duplicate=True):
   "    RF"
   # Apply random forest Classifier to predict the number of bugs.
   if smoteit:
-    train = SMOTE(train)
+    train = SMOTE(train, atleast=50, atmost=101, resample=duplicate)
   if not tunings:
     clf = RandomForestClassifier(n_estimators=100)
   else:
@@ -148,7 +148,7 @@ def _RF():
   preds = rforest(train_DF, test_df, mss=6, msl=8,
                   max_feat=4, n_est=5756,
                   smoteit=False)
-  print _Abcd(before=actual, after=preds, show=False)[-1]
+  print(_Abcd(before=actual, after=preds, show=False)[-1])
 
 
 def CART(train, test, tunings=None, smoteit=True, duplicate=True):
