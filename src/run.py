@@ -33,7 +33,7 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=10):
+          reps=1):
 
     self.dataName = dataName
     self.pred = pred
@@ -93,7 +93,7 @@ class run():
       else:
         suffix = ""
 
-    self.out_pred.insert(str(self.pred.__doc__) + Suffix)
+    self.out_pred.insert(0, str(self.pred.__doc__) + suffix)
     return self.out_pred
 
 
@@ -121,7 +121,7 @@ def _test(isLatex=False):
 
     rdivDemo(E, isLatex=isLatex)
     latex().postamble()
-  print("\end{document}")
+  print("\\end{table*}\n\\end{document}")
 
 
 if __name__ == '__main__':

@@ -17,6 +17,7 @@ class latex():
               \newcommand{\quart}[4]{\begin{picture}(100,6)
               {\color{black}\put(#3,3){\circle*{4}}\put(#1,3){\line(1,0){#2}}}\end{picture}}
               \begin{document}
+              \begin{table*}[htbp!]
               """)
 
   def subsection(self, str):

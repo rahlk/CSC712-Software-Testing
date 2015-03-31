@@ -12,7 +12,7 @@ sys.path.extend([axe, pystat, cwd])
 from scipy.stats.mstats import mode
 from scipy.spatial.distance import euclidean
 from numpy import mean
-
+from sklearn import tree
 from random import choice, uniform as rand
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -158,7 +158,7 @@ def CART(train, test, tunings=None, smoteit=True, duplicate=True):
     train = SMOTE(train, atleast=50, atmost=101, resample=duplicate)
 
   if not tunings:
-    clf = DecisionTreeClassifier(criterion='entropy',)
+    clf = DecisionTreeClassifier(criterion='entropy')
   else:
     clf = DecisionTreeClassifier(max_depth=int(tunings[0]),
                                  min_samples_split=int(tunings[1]),
@@ -173,12 +173,14 @@ def CART(train, test, tunings=None, smoteit=True, duplicate=True):
   # set_trace()
   clf.fit(train_DF[features].astype('float32'), klass.astype('float32'))
   preds = clf.predict(test_DF[test_DF.columns[:-2]].astype('float32')).tolist()
+  with open("tree2.dot", 'w') as f:
+    f = tree.export_graphviz(clf, out_file=f)
   return preds
 
 
 def _CART():
   "Test CART"
-  dir = './Data'
+  dir = '../Data'
   one, two = explore(dir)
   # Training data
   train_DF = createTbl(one[0])
@@ -187,7 +189,7 @@ def _CART():
   actual = Bugs(test_df)
   preds = CART(train_DF, test_df)
   set_trace()
-  _Abcd(train=actual, test=preds, verbose=True)
+  _Abcd(train=actual, test=preds, verbose=True)[-1]
 
 
 def adaboost(train, test, smoteit=True):
@@ -268,6 +270,6 @@ if __name__ == '__main__':
   random.seed(0)
   Dat = []
   for _ in xrange(10):
-    print(_where2pred())
+    print(_CART())
 #  Dat.insert(0, 'Where2 untuned')
 #  rdivDemo([Dat])
