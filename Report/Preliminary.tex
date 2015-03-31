@@ -1,0 +1,186 @@
+\documentclass[12pt, journal, compsoc]{IEEEtran}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{tabulary}
+\usepackage{bigstrut}
+\setlength\fboxsep{1pt}
+\setlength\fboxrule{1pt}
+\usepackage{multicol}
+\bstctlcite{IEEEexample:BSTcontrol}
+\usepackage[table]{xcolor}
+\usepackage{picture}
+\newcommand{\quart}[4]{\begin{picture}(100,3)
+{\color{black}\put(#3,3){\circle*{4}}\put(#1,3){\line(1,0){#2}}}\end{picture}}
+\usepackage{amsmath}
+\usepackage{balance}
+\usepackage{flushend}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{times}
+\usepackage{cite}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = false,
+  hidelinks = true
+}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+\begin{document}
+  \markboth{CSC 712: Software Testing and Reliability. Fall, 
+    2014}%
+  {CSC 712 Software Testing and Reliability. Fall, 
+    2014}
+  
+  \title{On Strategies for Improving Software Defect Prediction}
+  \author{Rahul Krishna, 
+    \IEEEauthorblockA{\normalsize {\textit{Dept. of Electrical and Computer 
+          Engineering}\\
+        North Carolina State University, Email: 
+        \href{mailto:rkrish11@ncsu.edu}{{rkrish11@ncsu.edu}}}}}
+  
+  \IEEEcompsoctitleabstractindextext{%
+    \begin{abstract}
+      Programming inherently introduces defects into programs, as a result software systems can crash or fail to deliver an important functionality. It is very important to test a software throughly before it can be used. But an extensive testing can be prohibitively expensive or may take too much time to conduct This necessitates the use of automated software defect prediction tools. Although numerous machine learning algorithms are available to detect defects in software, but several factors undermine the accuracy of such algorithm. This paper uses Classification and Regression Trees (CART) and Random Forests to examines two approaches to counter the aforementioned problem. The first approach involves the use Synthetic Minority Oversampling Technique (also known as SMOTE). The second approach attempts to use a metaheursitic algorithm such as differential evolution to find the right set of parameters that can change the performance of the predictor. 
+    \end{abstract}
+    
+    \begin{IEEEkeywords}
+      Defect Prediction, Machine Learning, Differential Evolution, CART, Random Forest.
+    \end{IEEEkeywords}}
+\maketitle
+
+\section{Introduction}
+\section{Results}
+\begin{table*}[htbp!]
+  \begin{subtable}{0.5\linewidth}
+    \caption{Ant} \label{ant}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+    \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 &   RF &    41.0  &  3.0 & \quart{0}{7}{2}{-102} \bigstrut\\
+    \hline  2 &   CART &    44.0  &  3.0 & \quart{10}{8}{10}{-102} \bigstrut\\
+    \hline  3 & CART (SMOTE) &    70.0  &  2.0 & \quart{76}{5}{78}{-102} \bigstrut\\
+    \hline  4 & RF (SMOTE) &    78.0  &  1.0 & \quart{97}{2}{99}{-102} \bigstrut\\[0.1cm]
+    \hline \end{tabulary}}
+  \end{subtable}
+  \begin{subtable}{0.5\linewidth}
+    \caption{Camel} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+    \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & RF &    39.0  &  1.0 & \quart{0}{4}{0}{-172} \bigstrut\\
+    \hline  2 & CART &    43.0  &  2.0 & \quart{9}{9}{18}{-172} \bigstrut\\
+    \hline  3 & CART (SMOTE) &    56.0  &  2.0 & \quart{72}{9}{77}{-172} \bigstrut\\
+    \hline  4 & RF (SMOTE) &    60.0  &  2.0 & \quart{90}{9}{95}{-172} \bigstrut\\
+  \hline \end{tabulary}}
+  \end{subtable}\\[0.2cm]
+  
+  \begin{subtable}{0.5\linewidth}
+    \caption{Ivy} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & RF (SMOTE) &    0.0  &  0.0 & \quart{0}{0}{0}{1} \bigstrut\\
+      1 & CART (SMOTE) &    15.0  &  15.0 & \quart{0}{26}{26}{1} \bigstrut\\
+    \hline  2 &   RF &    50.0  &  1.0 & \quart{85}{2}{87}{1} \bigstrut\\
+    \hline  3 &   CART &    56.0  &  1.0 & \quart{98}{1}{98}{1} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}
+  \begin{subtable}{0.5\linewidth}
+    \caption{Jedit} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & RF &    0.0  &  0.0 & \quart{0}{0}{0}{1} \bigstrut\\
+      1 & CART (SMOTE) &    84.0  &  1.0 & \quart{89}{1}{90}{1} \bigstrut\\
+      1 & RF (SMOTE) &    88.0  &  1.0 & \quart{93}{1}{94}{1} \bigstrut\\
+      1 & CART &    93.0  &  0.0 & \quart{99}{0}{99}{1} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}\\[0.2cm]
+
+  \begin{subtable}{0.5\linewidth}
+    \caption{POI} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 &   CART &    36.0  &  3.0 & \quart{0}{14}{0}{-166} \bigstrut\\
+      1 &   RF &    40.0  &  4.0 & \quart{4}{19}{19}{-166} \bigstrut\\
+    \hline  2 & RF (SMOTE) &    53.0  &  6.0 & \quart{71}{28}{80}{-166} \bigstrut\\
+      2 & CART (SMOTE) &    54.0  &  4.0 & \quart{76}{19}{85}{-166} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}
+  \begin{subtable}{0.5\linewidth}
+    \caption{Log4j} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & RF (SMOTE) &    2.0  &  2.0 & \quart{0}{4}{2}{0} \bigstrut\\
+    \hline  2 & CART (SMOTE) &    14.0  &  5.0 & \quart{31}{12}{31}{0} \bigstrut\\
+    \hline  3 & RF &    22.0  &  2.0 & \quart{48}{5}{51}{0} \bigstrut\\
+    \hline  4 & CART &    41.0  &  2.0 & \quart{95}{4}{97}{0} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}\\[0.2cm]
+
+  \begin{subtable}{0.5\linewidth}
+    \caption{Lucene} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & CART &    47.0  &  1.0 & \quart{0}{9}{0}{-418} \bigstrut\\
+    \hline  2 & RF &    51.0  &  1.0 & \quart{36}{9}{36}{-418} \bigstrut\\
+      2 & CART (SMOTE) &    50.0  &  4.0 & \quart{27}{36}{27}{-418} \bigstrut\\
+    \hline  3 & RF (SMOTE) &    56.0  &  3.0 & \quart{72}{27}{81}{-418} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}
+  \begin{subtable}{0.5\linewidth}
+    \caption{PBeans} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & RF &    51.0  &  0.0 & \quart{49}{0}{49}{-449} \bigstrut\\
+      1 & CART &    53.0  &  0.0 & \quart{69}{0}{69}{-449} \bigstrut\\
+      1 & CART (SMOTE) &    56.0  &  10.0 & \quart{0}{99}{99}{-449} \bigstrut\\
+      1 & RF (SMOTE) &    56.0  &  1.0 & \quart{89}{10}{99}{-449} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}\\[0.2cm]
+
+
+  \begin{subtable}{0.5\linewidth}
+    \caption{Velocity} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & CART (SMOTE) &    63.0  &  1.0 & \quart{0}{9}{9}{-609} \bigstrut\\
+    \hline  2 & RF (SMOTE) &    68.0  &  2.0 & \quart{39}{20}{59}{-609} \bigstrut\\
+    \hline  3 & CART &    70.0  &  2.0 & \quart{59}{20}{79}{-609} \bigstrut\\
+      3 & RF &    70.0  &  2.0 & \quart{79}{20}{79}{-609} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}
+  \begin{subtable}{0.5\linewidth}
+    \caption{Xalan} \label{Camel}
+    {\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+        \hline
+    \textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+      1 & RF &    24.0  &  1.0 & \quart{0}{2}{0}{-58} \bigstrut\\
+    \hline  2 & CART &    52.0  &  18.0 & \quart{53}{46}{71}{-58} \bigstrut\\
+      2 & CART (SMOTE) &    59.0  &  2.0 & \quart{84}{5}{89}{-58} \bigstrut\\
+      2 & RF (SMOTE) &    60.0  &  1.0 & \quart{92}{2}{92}{-58} \bigstrut\\
+    \hline \end{tabulary}}
+  \end{subtable}
+\end{table*}
+
+
+
+%\subsection*{xerces}
+%
+%{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+%\hline
+%\textbf{Rank} & \textbf{Treatment} & \textbf{Med} & \textbf{IQR} & \\\hline
+%  1 & xerceRF (SMOTE) &    5.0  &  1.0 & \quart{0}{4}{0}{-19} \bigstrut\\
+%\hline  2 & xerceCART (SMOTE) &    14.0  &  2.0 & \quart{44}{10}{44}{-19} \bigstrut\\
+%\hline  3 & xerceSMOTE, RF (SMOTE) &    18.0  &  1.0 & \quart{59}{5}{64}{-19} \bigstrut\\
+%\hline  4 & xerceSMOTE, CART (SMOTE) &    22.0  &  4.0 & \quart{79}{20}{84}{-19} \bigstrut\\
+%\hline \end{tabulary}}
+\end{document}

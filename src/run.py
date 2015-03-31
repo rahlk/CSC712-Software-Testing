@@ -83,16 +83,16 @@ class run():
 
     if self._smoteit:
       if self._tuneit:
-        suffix = "_s+tune_"
+        suffix = "s, tune, "
       else:
-        suffix = "_s_"
+        suffix = ", s, "
     else:
       if self._tuneit:
-        suffix = "_tune_"
+        suffix = ", tune, "
       else:
-        suffix = "_"
+        suffix = ", "
 
-    self.out_pred.insert(0, self.dataName + suffix + str(self.pred.__doc__))
+    self.out_pred.insert(0, self.dataName[:3] + suffix + str(self.pred.__doc__))
     return self.out_pred
 
 
