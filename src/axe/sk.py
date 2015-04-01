@@ -573,7 +573,7 @@ def rdivDemo(data, isLatex=False):
       all += x.quartiles()
     all = sorted(all)
     lo, hi = all[0], all[-1]
-    print "{\\normalsize \\begin{tabular}{|l@{~~~}|l@{~~~}|r@{~~~}|r@{~~~}|c|}"
+    print "{\\tiny \\begin{tabulary}{\linewidth}{|J|J|J|J|J|}"
     print "\hline"
     # min= %s, max= %s\\\\' % (int(lo),int(hi))
     print r'\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \bigstrut\\\hline'
@@ -593,7 +593,8 @@ def rdivDemo(data, isLatex=False):
               z(q2),
               z(100))
       last = x.rank
-    print r"\hline \end{tabular}}"
+    print r"\hline \end{tabulary}}"
+    return ranks
 #     print('''
 #     \end{document}
 #     ''')
@@ -621,3 +622,4 @@ def rdivDemo(data, isLatex=False):
              (x.rank + 1, x.name, x.median(), x.spread())) + \
           xtile(x.all, lo=lo, hi=hi, width=30)
       last = x.rank
+    return ranks

@@ -46,7 +46,7 @@ def settings(**d):
            N=5,
            f=0.5,
            cf=0.4,
-           lives=20)
+           lives=10)
   ).update(**d)
 
 The = settings()
@@ -144,7 +144,7 @@ class tuneRF(object):
   def __init__(self, data):
     self.data = data
     self.train = createTbl(data[:-1])
-    self.test = createTbl(data[-1])
+    self.test = createTbl([data[-1]])
 #   set_trace()
 
   def depen(self, rows):
@@ -247,7 +247,7 @@ if __name__ == '__main__':
   from timeit import time
   data = explore(dir='../Data/')[0][0]  # Only training data to tune.
 #   set_trace()
-  for m in [tuneCART]:
+  for m in [tuneRF]:
     t = time.time()
     mdl = m(data)
 #   _test(data)

@@ -23,6 +23,7 @@ from os import walk
 from demos import cmd
 from latex import latex
 
+
 class run():
 
   def __init__(
@@ -32,7 +33,7 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=10):
+          reps=3):
 
     self.dataName = dataName
     self.pred = pred
@@ -83,42 +84,49 @@ class run():
 
     if self._smoteit:
       if self._tuneit:
-        suffix = "_s+tune_"
+        suffix = "(SMOTE, Tune)"
       else:
-        suffix = "_s_"
+        suffix = "(SMOTE)"
     else:
       if self._tuneit:
-        suffix = "_tune_"
+        suffix = "(Tune)"
       else:
-        suffix = "_"
+        suffix = ""
 
-    self.out_pred.insert(0, self.dataName + suffix + str(self.pred.__doc__))
+    self.out_pred.insert(0, str(self.pred.__doc__) + suffix)
     return self.out_pred
 
 
-def _test(isLatex = False):
-  tune = [False]#, True]
+def _test(isLatex=False):
+  print("All but one")
+  tune = [False]  # , True]
   smote = [True, False]
-  if isLatex: latex().preamble()
-  for file in ['ant', 'camel', 'ivy',
+  if isLatex:
+    latex().preamble()
+  for file in ['ant', 'camel', 'ivy', 'forrest',
                'jedit', 'poi', 'log4j',
-               'lucene', 'pbeans', 'velocity',
+               'lucene', 'velocity',
                'xalan', 'xerces']:
     E = []
-    if isLatex: latex().subsection(file)
+    if isLatex:
+      latex().subsection(file)
+    else:
+      print("## %s" % (file))
     for pred in [CART, rforest]:
       for t in tune:
         for s in smote:
           R = run(
-               pred=pred,
-               dataName=file,
-               _tuneit=t,
-               _smoteit=s).go()
+              pred=pred,
+              dataName=file,
+              _tuneit=t,
+              _smoteit=s).go()
           E.append(R)
-    
-    rdivDemo(E, isLatex=isLatex)
-    
 
-  
+    rdivDemo(E, isLatex=isLatex)
+    if isLatex:
+      latex().postamble()
+  print("\\end{table*}\n\\end{document}")
+
+
 if __name__ == '__main__':
   eval(cmd())
