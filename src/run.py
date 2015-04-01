@@ -33,7 +33,7 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=1):
+          reps=3):
 
     self.dataName = dataName
     self.pred = pred
@@ -98,17 +98,20 @@ class run():
 
 
 def _test(isLatex=False):
-  tune = [False, True]
+  print("All but one")
+  tune = [False]  # , True]
   smote = [True, False]
   if isLatex:
     latex().preamble()
-  for file in ['ant', 'camel', 'ivy',
+  for file in ['ant', 'camel', 'ivy', 'forrest',
                'jedit', 'poi', 'log4j',
-               'lucene', 'pbeans', 'velocity',
+               'lucene', 'velocity',
                'xalan', 'xerces']:
     E = []
     if isLatex:
       latex().subsection(file)
+    else:
+      print("## %s" % (file))
     for pred in [CART, rforest]:
       for t in tune:
         for s in smote:
@@ -120,7 +123,8 @@ def _test(isLatex=False):
           E.append(R)
 
     rdivDemo(E, isLatex=isLatex)
-    latex().postamble()
+    if isLatex:
+      latex().postamble()
   print("\\end{table*}\n\\end{document}")
 
 
