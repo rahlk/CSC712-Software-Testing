@@ -111,7 +111,7 @@ def _test(isLatex=False):
     if isLatex:
       latex().subsection(file)
     else:
-      print("## %s" % (file))
+      print("## %s\n```" % (file))
     for pred in [CART, rforest]:
       for t in tune:
         for s in smote:
@@ -125,7 +125,9 @@ def _test(isLatex=False):
     rdivDemo(E, isLatex=isLatex)
     if isLatex:
       latex().postamble()
-  print("\\end{table*}\n\\end{document}")
+    else:
+      print('```')
+  if isLatex: print("\\end{table*}\n\\end{document}")
 
 
 if __name__ == '__main__':
