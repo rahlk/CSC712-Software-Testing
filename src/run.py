@@ -73,8 +73,8 @@ class run():
   def go(self):
     for _ in xrange(self.reps):
       predRows = []
-      train_DF = createTbl(self.train[self._n][:-1], isBin=True, bugThres=1)
-      test_df = createTbl([self.train[self._n][-1]], isBin=True, bugThres=1)
+      train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
+      test_df = createTbl(self.test[self._n], isBin=True, bugThres=1)
       actual = Bugs(test_df)
       before = self.pred(train_DF, test_df,
                          tunings=self.tunedParams,
