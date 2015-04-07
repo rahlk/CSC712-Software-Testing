@@ -33,7 +33,7 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=3):
+          reps=24):
 
     self.dataName = dataName
     self.pred = pred
@@ -73,8 +73,8 @@ class run():
   def go(self):
     for _ in xrange(self.reps):
       predRows = []
-      train_DF = createTbl(self.train[self._n], isBin=True)
-      test_df = createTbl(self.test[self._n], isBin=True)
+      train_DF = createTbl(self.train[self._n][:-1], isBin=True, bugThres=1)
+      test_df = createTbl([self.train[self._n][-1]], isBin=True, bugThres=1)
       actual = Bugs(test_df)
       before = self.pred(train_DF, test_df,
                          tunings=self.tunedParams,
@@ -97,8 +97,8 @@ class run():
     return self.out_pred
 
 
-def _test(isLatex=False):
-  print("All but one")
+def _test(isLatex=True):
+  # print("All but one")
   tune = [False]  # , True]
   smote = [True, False]
   if isLatex:
@@ -127,7 +127,8 @@ def _test(isLatex=False):
       latex().postamble()
     else:
       print('```')
-  if isLatex: print("\\end{table*}\n\\end{document}")
+  if isLatex:
+    print("\\end{table*}\n\\end{document}")
 
 
 if __name__ == '__main__':

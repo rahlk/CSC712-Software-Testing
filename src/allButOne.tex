@@ -1,0 +1,150 @@
+\documentclass[a4paper]{article}
+              \usepackage{colortbl}
+              \usepackage{fullpage}
+              \usepackage{booktabs}
+              \usepackage{subcaption}
+              \usepackage{tabulary}
+              \usepackage{bigstrut}
+              \usepackage[table]{xcolor}
+              \usepackage{picture}
+              \newcommand{\quart}[4]{\begin{picture}(100,6)
+              {\color{black}\put(#3,3){\circle*{4}}\put(#1,3){\line(1,0){#2}}}\end{picture}}
+              \begin{document}
+
+\begin{table*}[htbp!]
+            
+\begin{subtable}{\linewidth} \centering 
+  
+\caption{ant} \label{ant}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &          RF  &    28.0  &  3.0 & \quart{0}{6}{4}{-56} \\
+\hline  2 &        CART  &    39.0  &  0.0 & \quart{29}{0}{29}{-56} \\
+\hline  3 & CART (SMOTE) &    61.0  &  0.0 & \quart{79}{0}{79}{-56} \\
+\hline  4 &   RF (SMOTE) &    70.0  &  0.0 & \quart{99}{0}{99}{-56} \\
+\hline \end{tabulary}}
+\end{subtable}
+\begin{subtable}{\linewidth} \centering
+\caption{camel} \label{camel}
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 & CART (SMOTE) &    54.0  &  8.0 & \quart{0}{53}{26}{-326} \\
+\hline  2 &   RF (SMOTE) &    57.0  &  2.0 & \quart{33}{13}{46}{-326} \\
+\hline  3 &          RF  &    62.0  &  1.0 & \quart{79}{7}{79}{-326} \\
+\hline  4 &        CART  &    65.0  &  0.0 & \quart{99}{0}{99}{-326} \\
+\hline \end{tabulary}}
+\end{subtable}\\[0.2cm]
+
+\begin{subtable}{\linewidth} \centering
+\caption{ivy} \label{ivy}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &   RF (SMOTE) &    9.0  &  0.0 & \quart{0}{0}{0}{-14} \\
+\hline  2 & CART (SMOTE) &    12.0  &  0.0 & \quart{5}{0}{5}{-14} \\
+\hline  3 &        CART  &    61.0  &  0.0 & \quart{91}{0}{91}{-14} \\
+\hline  4 &          RF  &    66.0  &  1.0 & \quart{98}{1}{99}{-14} \\
+\hline \end{tabulary}}
+\end{subtable}
+\begin{subtable}{\linewidth} \centering
+\caption{forrest} \label{forrest}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &        CART  &    0.0  &  0.0 & \quart{0}{0}{0}{1} \\
+  1 &   RF (SMOTE) &    0.0  &  0.0 & \quart{0}{0}{0}{1} \\
+  1 &          RF  &    0.0  &  0.0 & \quart{0}{0}{0}{1} \\
+\hline  2 & CART (SMOTE) &    62.0  &  0.0 & \quart{99}{0}{99}{1} \\
+\hline \end{tabulary}}
+\end{subtable}\\[0.2cm]
+\begin{subtable}{\linewidth} \centering
+\caption{jedit} \label{jedit}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 & CART (SMOTE) &    68.0  &  0.0 & \quart{0}{0}{0}{-744} \\
+\hline  2 &        CART  &    75.0  &  0.0 & \quart{77}{0}{77}{-744} \\
+  2 &          RF  &    76.0  &  1.0 & \quart{77}{11}{88}{-744} \\
+\hline  3 &   RF (SMOTE) &    77.0  &  0.0 & \quart{99}{0}{99}{-744} \\
+\hline \end{tabulary}}
+\end{subtable}
+\begin{subtable}{\linewidth} \centering
+\caption{poi} \label{poi}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &        CART  &    24.0  &  0.0 & \quart{6}{0}{6}{-69} \\
+  1 &          RF  &    24.0  &  4.0 & \quart{0}{13}{6}{-69} \\
+\hline  2 &   RF (SMOTE) &    48.0  &  2.0 & \quart{83}{6}{86}{-69} \\
+\hline  3 & CART (SMOTE) &    52.0  &  0.0 & \quart{99}{0}{99}{-69} \\
+\hline \end{tabulary}}
+\end{subtable}\\[0.2cm]
+\begin{subtable}{\linewidth} \centering
+\caption{log4j} \label{log4j}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &   RF (SMOTE) &    5.0  &  0.0 & \quart{0}{0}{0}{-5} \\
+\hline  2 & CART (SMOTE) &    15.0  &  0.0 & \quart{14}{0}{14}{-5} \\
+\hline  3 &        CART  &    55.0  &  0.0 & \quart{72}{0}{72}{-5} \\
+\hline  4 &          RF  &    74.0  &  0.0 & \quart{99}{0}{99}{-5} \\
+\hline \end{tabulary}}
+\end{subtable}
+\begin{subtable}{\linewidth} \centering
+\caption{lucene} \label{lucene}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 & CART (SMOTE) &    49.0  &  0.0 & \quart{0}{0}{0}{-369} \\
+\hline  2 &   RF (SMOTE) &    52.0  &  0.0 & \quart{23}{0}{23}{-369} \\
+\hline  3 &        CART  &    61.0  &  0.0 & \quart{92}{0}{92}{-369} \\
+\hline  4 &          RF  &    62.0  &  0.0 & \quart{99}{0}{99}{-369} \\
+\hline \end{tabulary}}
+\end{subtable}\\[0.2cm]
+\begin{subtable}{\linewidth} \centering
+\caption{velocity} \label{velocity}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &   RF (SMOTE) &    0.0  &  0.0 & \quart{0}{0}{0}{5} \\
+\hline  2 & CART (SMOTE) &    5.0  &  0.0 & \quart{27}{0}{27}{5} \\
+\hline  3 &          RF  &    13.0  &  0.0 & \quart{72}{0}{72}{5} \\
+\hline  4 &        CART  &    18.0  &  0.0 & \quart{99}{0}{99}{5} \\
+\hline \end{tabulary}}
+\end{subtable}
+\begin{subtable}{\linewidth} \centering
+\caption{xalan} \label{xalan}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 & CART (SMOTE) &    51.0  &  10.0 & \quart{0}{45}{18}{-209} \\
+\hline  2 &   RF (SMOTE) &    60.0  &  4.0 & \quart{54}{18}{59}{-209} \\
+\hline  3 &        CART  &    67.0  &  0.0 & \quart{90}{0}{90}{-209} \\
+\hline  4 &          RF  &    68.0  &  1.0 & \quart{95}{4}{95}{-209} \\
+\hline \end{tabulary}}
+\end{subtable}\\[0.2cm]
+\begin{subtable}{\linewidth} \centering
+\caption{xerces} \label{xerces}
+
+{\tiny \begin{tabulary}{\linewidth}{|J|J|J|J|J|}
+\hline
+\textbf{Rank} & \textbf{Treatment} & \textbf{Median} & \textbf{IQR} & \\\hline
+  1 &          RF  &    33.0  &  3.0 & \quart{0}{19}{0}{-213} \\
+\hline  2 &        CART  &    37.0  &  0.0 & \quart{26}{0}{26}{-213} \\
+\hline  3 &   RF (SMOTE) &    42.0  &  4.0 & \quart{39}{27}{59}{-213} \\
+  3 & CART (SMOTE) &    43.0  &  10.0 & \quart{33}{66}{66}{-213} \\
+\hline \end{tabulary}}
+\end{subtable}\\[0.2cm]
+\end{table*}
+\end{document}
