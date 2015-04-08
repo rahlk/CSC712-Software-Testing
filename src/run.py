@@ -142,8 +142,9 @@ class run():
             0.9,
             0.9])
     ax.set_ylabel('WEIGHTS in %')
+    ax.set_xlabel('Features')
     ax.set_xticks(ind + width)
-    ax.set_xticklabels(tuple('F[' + str(n) + ']' for n in xrange(N)))
+    ax.set_xticklabels(tuple(str(n) for n in xrange(N)))
     plt.savefig('_figs/%s.jpg' % (self.dataName))
 
   def fWeight(self, criterion='Variance'):
