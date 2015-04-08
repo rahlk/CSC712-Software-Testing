@@ -22,6 +22,7 @@ from dEvol import tuner
 from os import walk
 from demos import cmd
 from latex import latex
+from weights import weights as W
 
 
 class run():
@@ -97,53 +98,108 @@ class run():
     return self.out_pred
 
   def go1(self):
+    import csv
     for _ in xrange(self.reps):
       predRows = []
       train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
       test_df = createTbl(self.test[self._n], isBin=True, bugThres=1)
       actual = Bugs(test_df)
-      before = self.pred(train_DF, test_df,
-                         tunings=self.tunedParams,
-                         smoteit=self._smoteit)
+      before = []
+      header = [h.name for h in train_DF.headers]
+      for smote in [True, False]:
+        for p in [CART, rforest]:
+          header += [p.__doc__] if not smote else [p.__doc__ + ' (SMOTE)']
+          before.append(p(train_DF, test_df,
+                          tunings=self.tunedParams,
+                          smoteit=smote))
+      body = []
+      for b, one, two, three, four in zip(test_df._rows, before[0], before[1], before[2], before[3]):
+        newCell = b.cells[:-1] + [one, two, three, four]
+        body.append(newCell)
+      with open('./raw/' + self.dataName + '.csv', 'w+') as fwrite:
+        writer = csv.writer(fwrite, delimiter=',')
+        writer.writerow(header)
+        for b in body:
+          writer.writerow(b)
 
-      with open('./raw/'+self.dataname, 'w+') as fwrite:
-        
-        
-      
+  def histplot(self, lst):
+    from numpy import median
+    from numpy import array
+    from numpy import std
+    from numpy import arange
+    import matplotlib.pyplot as plt
+    N = len(lst[0])
+    ind = arange(N)  # the x locations for the groups
+    width = 0.35       # the width of the bars
 
-def _test(isLatex=True):
-  # print("All but one")
-  tune = [False]  # , True]
-  smote = [True, False]
-  if isLatex:
-    latex().preamble()
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(
+        ind,
+        [l * 100 for l in lst[0]],
+        width,
+        color=[
+            0.9,
+            0.9,
+            0.9])
+    ax.set_ylabel('WEIGHTS in %')
+    ax.set_xticks(ind + width)
+    ax.set_xticklabels(tuple('F[' + str(n) + ']' for n in xrange(N)))
+    plt.savefig('_figs/%s.jpg' % (self.dataName))
+
+  def fWeight(self, criterion='Variance'):
+    train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
+    lbs = W(use=criterion).weights(train_DF)
+    sortedLbs = sorted([l / max(lbs[0]) for l in lbs[0]], reverse=True)
+    L = [l / max(lbs[0]) for l in lbs[0]]
+    self.histplot([L, lbs[1]])
+
+
+def _weights():
   for file in ['ant', 'camel', 'ivy', 'forrest',
                'jedit', 'poi', 'log4j',
                'lucene', 'velocity',
                'xalan', 'xerces']:
-    E = []
-    if isLatex:
-      latex().subsection(file)
-    else:
-      print("## %s\n```" % (file))
-    for pred in [CART, rforest]:
-      for t in tune:
-        for s in smote:
-          R = run(
-              pred=pred,
-              dataName=file,
-              _tuneit=t,
-              _smoteit=s).go()
-          E.append(R)
+    print("## %s" % (file))
+    R = run(dataName=file).fWeight()
 
-    rdivDemo(E, isLatex=isLatex)
-    if isLatex:
-      latex().postamble()
-    else:
-      print('```')
-  if isLatex:
-    print("\\end{table*}\n\\end{document}")
+
+def _test(isLatex=False):
+  # print("All but one")
+  # tune = [False]  # , True]
+  #   smote = [True, False]
+  #   if isLatex:
+  #     latex().preamble()
+  for file in ['ant', 'camel', 'ivy', 'forrest',
+               'jedit', 'poi', 'log4j',
+               'lucene', 'velocity',
+               'xalan', 'xerces']:
+    print("## %s" % (file))
+    R = run(dataName=file).go1()
+
+#     E = []
+#     if isLatex:
+#       latex().subsection(file)
+#     else:
+# print("## %s\n```" % (file))
+#     for pred in [CART, rforest]:
+#       for t in tune:
+#         for s in smote:
+#           R = run(
+#               pred=pred,
+#               dataName=file,
+#               _tuneit=t,
+#               _smoteit=s).go1()
+#           E.append(R)
+#
+#     rdivDemo(E, isLatex=isLatex)
+#     if isLatex:
+#       latex().postamble()
+#     else:
+#       print('```')
+#   if isLatex:
+#     print("\\end{table*}\n\\end{document}")
 
 
 if __name__ == '__main__':
-  eval(cmd())
+  _weights()
+#   eval(cmd())

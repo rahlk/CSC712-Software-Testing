@@ -2,6 +2,7 @@
 from __future__ import print_function, division
 from os import environ, getcwd
 import sys
+from bdb import set_trace
 
 # Update PYTHONPATH
 cwd = getcwd()  # Current Directory
@@ -19,6 +20,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.externals.six import StringIO
+import pydot
 from smote import *
 import pandas as pd
 from abcd import _Abcd
@@ -114,7 +117,7 @@ def _where2pred():
 
 
 def rforest(train, test, tunings=None, smoteit=True, duplicate=True):
-  "RF "
+  "RF"
   # Apply random forest Classifier to predict the number of bugs.
   if smoteit:
     train = SMOTE(train, atleast=50, atmost=101, resample=duplicate)
@@ -151,8 +154,15 @@ def _RF():
   print(_Abcd(before=actual, after=preds, show=False)[-1])
 
 
-def CART(train, test, tunings=None, smoteit=True, duplicate=True):
-  "CART "
+def CART(
+        train,
+        test,
+        tunings=None,
+        smoteit=True,
+        duplicate=True,
+        saveTree=False,
+        treeName=None):
+  "CART"
   # Apply random forest Classifier to predict the number of bugs.
   if smoteit:
     train = SMOTE(train, atleast=50, atmost=101, resample=duplicate)
@@ -173,8 +183,10 @@ def CART(train, test, tunings=None, smoteit=True, duplicate=True):
   # set_trace()
   clf.fit(train_DF[features].astype('float32'), klass.astype('float32'))
   preds = clf.predict(test_DF[test_DF.columns[:-2]].astype('float32')).tolist()
-#   with open("tree2.dot", 'w') as f:
-#     f = tree.export_graphviz(clf, out_file=f)
+  if saveTree:
+    print('## %s' % (treeName))
+    with open('trees/' + treeName + ".dot", 'w') as f:
+      f = tree.export_graphviz(clf, out_file=f)
   return preds
 
 
@@ -183,13 +195,15 @@ def _CART():
   dir = '../Data'
   one, two = explore(dir)
   # Training data
-  train_DF = createTbl(one[0])
-  # Test data
-  test_df = createTbl(two[0])
-  actual = Bugs(test_df)
-  preds = CART(train_DF, test_df)
-  set_trace()
-  _Abcd(train=actual, test=preds, verbose=True)[-1]
+  for o, t in zip(one, two):
+    train_DF = createTbl(o)
+    # Test data
+    test_df = createTbl(t)
+    actual = Bugs(test_df)
+    name = o[0].strip().split('/')[2]
+    preds = CART(train_DF, test_df, saveTree=True, treeName=name)
+#     set_trace()
+#     _Abcd(train=actual, test=preds, verbose=True)[-1]
 
 
 def adaboost(train, test, smoteit=True):
@@ -269,7 +283,7 @@ def knn(train, test, smoteit=True):
 if __name__ == '__main__':
   random.seed(0)
   Dat = []
-  for _ in xrange(10):
+  for _ in xrange(1):
     print(_CART())
 #  Dat.insert(0, 'Where2 untuned')
 #  rdivDemo([Dat])
