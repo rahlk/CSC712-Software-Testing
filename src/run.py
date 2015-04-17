@@ -97,36 +97,32 @@ class run():
     return self.out_pred
 
   def go1(self):
-    for _ in xrange(self.reps):
-      predRows = []
-      train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
-      test_df = createTbl(self.test[self._n], isBin=True, bugThres=1)
-      actual = Bugs(test_df)
-      before = self.pred(train_DF, test_df,
-                         tunings=self.tunedParams,
-                         smoteit=self._smoteit)
+    predRows = []
+    train_DF = createTbl(self.train[self._n][-2:], isBin=True, bugThres=1)
+    actual = Bugs(train_DF)
+    print(self.dataName,
+          len(actual),
+          sum(actual),
+          sum(actual) / len(actual) * 100)
+#       with open('./raw/'+self.dataname, 'w+') as fwrite:
 
-      with open('./raw/'+self.dataname, 'w+') as fwrite:
-        
-        
-      
 
 def _test(isLatex=True):
   # print("All but one")
   tune = [False]  # , True]
-  smote = [True, False]
-  if isLatex:
-    latex().preamble()
-  for file in ['ant', 'camel', 'ivy', 'forrest',
-               'jedit', 'poi', 'log4j',
-               'lucene', 'velocity',
-               'xalan', 'xerces']:
+  smote = [True]
+#   if isLatex:
+#     latex().preamble()
+  for file in ['ant', 'camel', 'ivy',
+               'jedit', 'log4j',
+               'lucene', 'poi', 'synapse', 'velocity',
+               'xalan']:
     E = []
     if isLatex:
       latex().subsection(file)
     else:
       print("## %s\n```" % (file))
-    for pred in [CART, rforest]:
+    for pred in [rforest]:
       for t in tune:
         for s in smote:
           R = run(
@@ -143,6 +139,18 @@ def _test(isLatex=True):
       print('```')
   if isLatex:
     print("\\end{table*}\n\\end{document}")
+
+
+def _test2(isLatex=True):
+  for file in ['ant', 'camel', 'ivy',
+               'jedit', 'log4j',
+               'lucene', 'poi', 'synapse', 'velocity',
+               'xalan']:
+    run(
+        pred=CART,
+        dataName=file,
+        _tuneit=False,
+        _smoteit=False).go1()
 
 
 if __name__ == '__main__':
