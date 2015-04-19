@@ -97,9 +97,9 @@ class run():
                          tunings=self.tunedParams,
                          smoteit=self._smoteit)
 
-      self.out_pred.append(_Abcd(before=actual, after=before)[-1])
+      out_pred.append(_Abcd(before=actual, after=before)[-1])
 
-    return self.out_pred
+    return out_pred
 
   def goRaw(self):
 
@@ -146,38 +146,33 @@ class run():
 #       with open('./raw/'+self.dataname, 'w+') as fwrite:
 
 
-def _test(isLatex=True):
-  # print("All but one")
+def _test(file, isLatex=True):
   tune = [False, True]
-  smote = [True]
+  smote = [False, True]
+#   for file in ['ant', 'camel', 'ivy',
+#                'jedit', 'log4j',
+#                'lucene', 'poi', 'synapse', 'velocity',
+#                'xalan']:
+  E = []
+  for pred in [CART, rforest]:
+    for t in tune:
+      for s in smote:
+        R = run(
+            reps=1,
+            pred=pred,
+            dataName=file,
+            _tuneit=t,
+            _smoteit=s).go()
+        print(R)
+#           E.append(R)
+#
+#     rdivDemo(E, isLatex=isLatex)
+#     if isLatex:
+#       latex().postamble()
+#     else:
+#       print('```')
 #   if isLatex:
-#     latex().preamble()
-  for file in ['ant', 'camel', 'ivy',
-               'jedit', 'log4j',
-               'lucene', 'poi', 'synapse', 'velocity',
-               'xalan']:
-    E = []
-    if isLatex:
-      latex().subsection(file)
-    else:
-      print("## %s\n```" % (file))
-    for pred in [rforest]:
-      for t in tune:
-        for s in smote:
-          R = run(
-              pred=pred,
-              dataName=file,
-              _tuneit=t,
-              _smoteit=s).go()
-          E.append(R)
-
-    rdivDemo(E, isLatex=isLatex)
-    if isLatex:
-      latex().postamble()
-    else:
-      print('```')
-  if isLatex:
-    print("\\end{table*}\n\\end{document}")
+#     print("\\end{table*}\n\\end{document}")
 
 
 def say(a, b, c):
