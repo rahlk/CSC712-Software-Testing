@@ -32,7 +32,7 @@
 
 
 \begin{document}
-  \markboth{CSC 712: Software Testing and Reliability. Fall, 
+  \markboth{CSC 712: Software Testing and Reliability. , 
     2014}%
   {CSC 712 Software Testing and Reliability. Fall, 
     2014}
@@ -55,15 +55,18 @@
 \maketitle
 
 \section{Introduction}
+Defect prediction is the study of identifying which software \textit{modules} are defective. Modules refer to some premitive units of an operating systems, like funtions or classes. It needs to be pointed out that early identification of possible defects can lead to a significant reduction in construction costs. No software is developed in a single day, or by just one person, rather it is constructed over time with old modules being extensively reused. Therefore, the sooner defects can be detected and fixed, the less rework is required for development. Boehm and Papaccio~\cite{boehm88} for instance mention that reworking software early in its life-cycle is far more cost effective (\textit{by a factor of almost 200}) than doing so later in it's life cycle. This effect has also been reported by several other studies. In their study, Shull \textit{et al.}~\cite{shull2002we} report that finding a repairing severe software defects is often hudereds of times cheaper if done during the requirements and design phase than doing so after the release. In fact, they claim that \textit{``About 40-50\% of user programs enter use with
+nontrivial defects.''}. Authur \textit{et al.} \cite{arthur99} conducted a controlled study with a few engineers at NASA's Langley Research Center, they found the group with a specialized verification team found, (a) More issues, (b) Found them early, which directly translates to lower costs to fix, see~\cite{dabney2006predicting.}
 
 The rest of this paper is organized as follows--- Section \ref*{motivation} offers a small ilustration of the impact of SMOTE and tuning on the accuracy of the predictor. Section \ref*{back} highlights the underlying principles used in this paper. Section \ref{setup} presents the experimental setup followed by section \ref{expt} which presents the experimental results and discuss each one. Section \ref{concl} contains concluding remarks and finally section \ref{future} talks about the future work.
-\section{Motivating Example}
-\label{motivation}
-\section{Background Notes}
-\label{back}
+% \section{Motivating Example}
+% \label{motivation}
+% \section{Background Notes}
+% \label{back}
+
 \subsection{Defect Prediction}
-\subsection{SMOTE}
-\subsection{The Classifiers}
+% \subsection{SMOTE}
+% \subsection{The Classifiers}
 \subsection{Differential Evolution}
 \begin{algorithm}[htbp!]
   
@@ -300,9 +303,11 @@ The rest of this paper is organized as follows--- Section \ref*{motivation} offe
   \end{subtable}
   \caption{Performance scores (g values) for the data sets.}
 \end{table*}
-\subsection{SMOTE\textit{ing} improves Prediction Accuracy}
-\subsection{Tuning Also improves Prediction Accuracy (?)}
-\subsection{SMOTE\textit{ing}+Tuning improves Prediction Accuracy (?)}
-\section{Conclusions}
+% \subsection{SMOTE\textit{ing} improves Prediction Accuracy}
+% \subsection{Tuning Also improves Prediction Accuracy (?)}
+% \subsection{SMOTE\textit{ing}+Tuning improves Prediction Accuracy (?)}
+% \section{Conclusions}
 
+\bibliographystyle{IEEEtran}
+\bibliography{Ref}
 \end{document}
