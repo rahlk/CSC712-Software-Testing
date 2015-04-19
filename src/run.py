@@ -24,6 +24,11 @@ from demos import cmd
 from latex import latex
 
 
+def write(str):
+  sys.stdout.write(str)
+  sys.stdout.flush()
+
+
 class run():
 
   def __init__(
@@ -33,7 +38,7 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=24):
+          reps=10):
 
     self.dataName = dataName
     self.pred = pred
@@ -71,6 +76,18 @@ class run():
                 whereis()])]  # Train, Test
 
   def go(self):
+    if self._smoteit:
+      if self._tuneit:
+        suffix = "(SMOTE, Tune)"
+      else:
+        suffix = "(SMOTE)"
+    else:
+      if self._tuneit:
+        suffix = "(Tune)"
+      else:
+        suffix = ""
+
+    out_pred = [str(self.pred.__doc__) + suffix]
     for _ in xrange(self.reps):
       predRows = []
       train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
@@ -81,6 +98,14 @@ class run():
                          smoteit=self._smoteit)
 
       self.out_pred.append(_Abcd(before=actual, after=before)[-1])
+
+    return self.out_pred
+
+  def goRaw(self):
+
+    def iqr(lst):
+      lst = sorted(lst)
+      return lst[int(len(lst) * 0.75)] - lst[int(len(lst) * 0.25)]
 
     if self._smoteit:
       if self._tuneit:
@@ -93,8 +118,22 @@ class run():
       else:
         suffix = ""
 
-    self.out_pred.insert(0, str(self.pred.__doc__) + suffix)
-    return self.out_pred
+    out = []
+
+    for _ in xrange(self.reps):
+      predRows = []
+      train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
+      test_df = createTbl(self.test[self._n], isBin=True, bugThres=1)
+      actual = Bugs(test_df)
+      before = self.pred(train_DF, test_df,
+                         tunings=self.tunedParams,
+                         smoteit=self._smoteit)
+
+      out.append(_Abcd(before=actual, after=before))
+
+    med = [np.median([o[i] for o in out]) for i in xrange(len(out[0]))]
+    quart = [iqr([o[i] for o in out]) for i in xrange(len(out[0]))]
+    return str(self.pred.__doc__) + suffix, med, quart
 
   def go1(self):
     predRows = []
@@ -109,7 +148,7 @@ class run():
 
 def _test(isLatex=True):
   # print("All but one")
-  tune = [False]  # , True]
+  tune = [False, True]
   smote = [True]
 #   if isLatex:
 #     latex().preamble()
@@ -141,6 +180,68 @@ def _test(isLatex=True):
     print("\\end{table*}\n\\end{document}")
 
 
+def say(a, b, c):
+  write(a)
+
+  for med, iqr in zip(b, c):
+    write(', ' + str(med) + ', ' + str(iqr))
+
+  print('')
+
+
+def _testRaw():
+  tune = [False, True]
+  smote = [False, True]
+
+  for file in ['ant', 'camel', 'ivy',
+               'jedit', 'log4j',
+               'lucene', 'poi', 'synapse', 'velocity',
+               'xalan']:
+    print(
+        'Treatment,',
+        'TP,',
+        ',',
+        'FP,',
+        ',',
+        'FN,',
+        ',',
+        'TN,',
+        ',',
+        'Accuracy,',
+        ',',
+        'Recall,',
+        ',',
+        'Fallout,',
+        ',',
+        'Precision,',
+        ',',
+        'F,',
+        ',',
+        'G,'
+        ',')
+    print(
+        ',',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq,',
+        'med, irq')
+    for pred in [rforest, CART]:
+      for t in tune:
+        for s in smote:
+          name, med, iqr = run(
+              pred=pred,
+              dataName=file,
+              _tuneit=t,
+              _smoteit=s).goRaw()
+          say(name, med, iqr)
+
+
 def _test2(isLatex=True):
   for file in ['ant', 'camel', 'ivy',
                'jedit', 'log4j',
@@ -154,4 +255,5 @@ def _test2(isLatex=True):
 
 
 if __name__ == '__main__':
-  eval(cmd())
+  _testRaw()
+#   eval(cmd())

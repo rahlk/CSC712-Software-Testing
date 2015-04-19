@@ -21,7 +21,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.externals.six import StringIO
-import pydot
+# import pydot
 from smote import *
 import pandas as pd
 from abcd import _Abcd
