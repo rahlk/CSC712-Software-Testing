@@ -63,6 +63,38 @@ The rest of this paper is organized as follows--- Section \ref*{motivation} offe
 \label{back}
 \subsection{Defect Prediction}
 \subsection{SMOTE}
+\begin{figure}[!tb]
+  \renewcommand{\baselinestretch}{1.25}\begin{center}
+    {\tiny
+      \begin{tabular}{l@{~~~}l@{~~~}l@{~~~}l@{~~~}c@{~~~}l@{~~~}l@{~~~}}
+        \hline
+        \rowcolor{lightgray}
+        Data & Symbol & Training & Testing & Training Samples& Defective &\% Defective \\\hline
+        
+        Ant & ant & 1.5, 1.6  &1.7 & 644&124&19.25\\
+        
+        Camel & cam & 1.2, 1.4 & 1.6 & 1480&361 & 24.39\\
+        
+        Ivy & ivy & 1.1, 1.4 & 2.0  & 352 & 79 & 22.44\\
+        
+        Jedit & jed & 4.1, 4.2 & 4.3 & 679 & 127 & 18.70\\
+        
+        Log4j & log & 1.0, 1.1 & 1.2 & 244 & 71 & 29.09\\
+        
+        Lucene & luc & 2.0, 2.2 & 2.4 & 442 & 235 & 53.16\\
+        
+        Poi & poi & 2.0, 2.5 & 3.0 & 699 & 285 & 40.77\\
+        
+        Synapse & syn & 1.0, 1.1 & 1.2 & 379 & 76 & 20.05\\
+        
+        Velocity & vel & 1.4, 1.5 & 1.6 & 410& 289 & 70.48\\
+        
+        Xalan & xal &2.5, 2.6 &2.7 & 1688 & 798 & 47.27\\\hline
+      \end{tabular}}
+    \end{center}
+    \caption{Attributes of the defect data sets}\label{fig:ck}
+  \end{figure}
+
 \subsection{The Classifiers}
 \subsection{Differential Evolution}
 \begin{algorithm}[htbp!]

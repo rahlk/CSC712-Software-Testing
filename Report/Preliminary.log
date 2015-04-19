@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 APR 2015 09:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 APR 2015 22:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -563,6 +563,9 @@ Package hyperref Warning: Unexpected value for option `hidelinks'
 
 (./Preliminary.aux
 
+LaTeX Warning: Label `fig:ck' multiply defined.
+
+
 LaTeX Warning: Label `Camel' multiply defined.
 
 
@@ -740,63 +743,63 @@ LaTeX Warning: Reference `future' on page 1 undefined on input line 59.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 64.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 120.
+put line 152.
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 185--208
+Overfull \hbox (2.06996pt too wide) in paragraph at lines 217--240
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--208
+Underfull \hbox (badness 10000) in paragraph at lines 217--240
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 209--231
+Overfull \hbox (2.06996pt too wide) in paragraph at lines 241--263
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--231
+Underfull \hbox (badness 10000) in paragraph at lines 241--263
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 232--254
+Overfull \hbox (2.06996pt too wide) in paragraph at lines 264--286
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--254
+Underfull \hbox (badness 10000) in paragraph at lines 264--286
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 255--277
+Overfull \hbox (2.06996pt too wide) in paragraph at lines 287--309
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--277
+Underfull \hbox (badness 10000) in paragraph at lines 287--309
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 279--301
+Overfull \hbox (2.06996pt too wide) in paragraph at lines 311--333
 []$[]$ $[]$ 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 303.
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 335.
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 303.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 335.
 
-Underfull \hbox (badness 6859) in paragraph at lines 305--305
+Underfull \hbox (badness 6859) in paragraph at lines 337--337
  \OT1/phv/b/n/12 5.3 SMOTE\OT1/phv/b/sl/12 ing\OT1/phv/b/n/12 +Tuning im-proves
  Pre-dic-
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 308.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 340.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -804,10 +807,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 - LAST -
-Extra skip:15.77997pt
-Left:85.37996pt/2.5979pt
-Right:69.59999pt/0.16794pt
-Output:85.37996pt
+Extra skip:3.68018pt
+Left:158.20204pt/0.0pt
+Right:154.52187pt/0.0pt
+Output:158.20204pt
  [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -818,10 +821,10 @@ Overfull \vbox (202.05644pt too high) has occurred while \output is active []
 [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 308.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 340.
  (./Preliminary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 308.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 308.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 340.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 340.
 Package rerunfilecheck Info: File `Preliminary.out' has not changed.
 (rerunfilecheck)             Checksum: 5DE086976FF2E4D4B14C75D8702BB13F;903.
 
@@ -833,36 +836,33 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9898 strings out of 493117
- 148511 string characters out of 6135433
- 318345 words of memory out of 5000000
+ 9899 strings out of 493117
+ 148527 string characters out of 6135433
+ 333345 words of memory out of 5000000
  13178 multiletter control sequences out of 15000+600000
  73466 words of font info for 140 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,15n,40p,983b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section.2} has been referenced but does not exist
-, replaced by a fixed one
-
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/tim
-es/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/zapfding/uzdr
-.pfb>
-Output written on Preliminary.pdf (3 pages, 141127 bytes).
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/f
+onts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/zapfding/uz
+dr.pfb>
+Output written on Preliminary.pdf (3 pages, 142765 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
