@@ -189,57 +189,52 @@ def say(a, b, c):
   print('')
 
 
-def _testRaw():
+def _testRaw(file):
   tune = [False, True]
   smote = [False, True]
-
-  for file in ['ant', 'camel', 'ivy',
-               'jedit', 'log4j',
-               'lucene', 'poi', 'synapse', 'velocity',
-               'xalan']:
-    print(
-        'Treatment,',
-        'TP,',
-        ',',
-        'FP,',
-        ',',
-        'FN,',
-        ',',
-        'TN,',
-        ',',
-        'Accuracy,',
-        ',',
-        'Recall,',
-        ',',
-        'Fallout,',
-        ',',
-        'Precision,',
-        ',',
-        'F,',
-        ',',
-        'G,'
-        ',')
-    print(
-        ',',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq,',
-        'med, irq')
-    for pred in [rforest, CART]:
-      for t in tune:
-        for s in smote:
-          name, med, iqr = run(
-              pred=pred,
-              dataName=file,
-              _tuneit=t,
-              _smoteit=s).goRaw()
-          say(name, med, iqr)
+  print(
+      'Treatment,',
+      'TP,',
+      ',',
+      'FP,',
+      ',',
+      'FN,',
+      ',',
+      'TN,',
+      ',',
+      'Accuracy,',
+      ',',
+      'Recall,',
+      ',',
+      'Fallout,',
+      ',',
+      'Precision,',
+      ',',
+      'F,',
+      ',',
+      'G,'
+      ',')
+  print(
+      ',',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq,',
+      'med, irq')
+  for pred in [rforest, CART]:
+    for t in tune:
+      for s in smote:
+        name, med, iqr = run(
+            pred=pred,
+            dataName=file,
+            _tuneit=t,
+            _smoteit=s).goRaw()
+        say(name, med, iqr)
 
 
 def _test2(isLatex=True):
@@ -255,5 +250,5 @@ def _test2(isLatex=True):
 
 
 if __name__ == '__main__':
-  _testRaw()
-#   eval(cmd())
+  #   _testRaw()
+  eval(cmd())
