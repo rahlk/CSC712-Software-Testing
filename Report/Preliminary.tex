@@ -7,6 +7,7 @@
 \usepackage{algpseudocode}
 \usepackage{tabulary}
 \usepackage{bigstrut}
+\linespread{1.25}
 \setlength\fboxsep{1pt}
 \setlength\fboxrule{1pt}
 \usepackage{multicol}
@@ -28,7 +29,7 @@
   hidelinks = true
 }
 \setlength{\parindent}{0em}
-\setlength{\parskip}{1em}
+\setlength{\parskip}{1.1em}
 
 
 \begin{document}
@@ -55,15 +56,30 @@
 \maketitle
 
 \section{Introduction}
+Defect prediction is the study of identifying which software \textit{modules} are defective. Modules refer to some premitive units of an operating systems, like funtions or classes. It needs to be pointed out that early identification of possible defects can lead to a significant reduction in construction costs. No software is developed in a single day, or by just one person, rather it is constructed over time with old modules being extensively reused. Therefore, the sooner defects can be detected and fixed, the less rework is required for development. Boehm and Papaccio~\cite{boehm88} for instance mention that reworking software early in its life-cycle is far more cost effective (\textit{by a factor of almost 200}) than doing so later in it's life cycle. This effect has also been reported by several other studies. In their study, Shull \textit{et al.}~\cite{shull2002we} report that finding a repairing severe software defects is often hudereds of times cheaper if done during the requirements and design phase than doing so after the release. In fact, they claim that \textit{``About 40-50\% of user programs enter use with
+  nontrivial defects.''}. Authur \textit{et al.} \cite{arthur99} conducted a controlled study with a few engineers at NASA's Langley Research Center, they found the group with a specialized verification team found, (a) More issues, (b) Found them early, which directly translates to lower costs to fix, see~\cite{dabney2006predicting}. 
+
+All this leads use to one key conclusion: \textit{Find Bugs Early!} For this we need efficient code analysis measures. We also want them to be generic in that they must be applicable across several projects. Moreover, platforms such as github has over 9 million users, hosting over 21.1 million repositories. Faced with such a massive code base we need these to also be easy to compute. Static code measure is one such tool, it can automatically extracted from a code base with very little effort even for very large software systems~\cite{nagappan2005static}. Such measures reduce the effort required for defect prediction. As \cite{tosun2010ai} and \cite{ostrand2004bugs} have shown, if inspection teams used defect predictors to identify  issues, they can find 80\% to 88\% of the defects after inspecting only 20\% to 25\% of the code.
+
+With these code analysis measure, we can make use of classification tools form machine learning, such as CART and Random Forest, to detect the presence of defects. However, notice the skewness in the above result, \textit{ 80\% of the problems reside in only 20\% of the modules}. This is a key difficulty often faced in software defect prediction. In other words we are trying to predict the occurrence of a defect in a software most of whose modules work just fine. Therefore the classification tool that is used is quite often unable to detect the faulty modules. This is, however, a very well known issue faced by several machine learning experts. In that context, this issue is referred to as class imbalanced in datasets. A data set that is heavily skewed toward the majority class will sometimes generate classifiers that never predict the minority class. In software defect prediction, this bias often makes the classifier highly accurate in predicting non-defects, and totally useless for predicting defects.
+
+One of the other issue in data mining is the choice of parameters that run these classification tools. The parameters of these data miners are rarely tested for the application they are being applied for. A common notion among it's users is that the space of options for these parameters has been well explored by experts and the best settings have been used.
+
+This brings us to the research question that this paper tries to answer.
+\begin{itemize}
+\item {\bfseries RQ1:  Can Over/under sampling techniques such as SMOTE to improve prediction accuracy for defect prediction?} It has been established to be a useful tool.
+\item {\bfseries RQ2: Does Tuning a data miner improve it's prediction accuracy?}
+\item {\bfseries RQ3: Is tuning performed in conjunction with SMOTE any better than either one performed alone?}
+\end{itemize}
+
+
 
 The rest of this paper is organized as follows--- Section \ref*{motivation} offers a small ilustration of the impact of SMOTE and tuning on the accuracy of the predictor. Section \ref*{back} highlights the underlying principles used in this paper. Section \ref{setup} presents the experimental setup followed by section \ref{expt} which presents the experimental results and discuss each one. Section \ref{concl} contains concluding remarks and finally section \ref{future} talks about the future work.
-\section{Motivating Example}
-\label{motivation}
 \section{Background Notes}
 \label{back}
 \subsection{Defect Prediction}
 \subsection{SMOTE}
-\begin{figure}[!tb]
+\begin{figure}[!htbp]
   \renewcommand{\baselinestretch}{1.25}\begin{center}
     {\tiny
       \begin{tabular}{l@{~~~}l@{~~~}l@{~~~}l@{~~~}c@{~~~}l@{~~~}l@{~~~}}
@@ -336,5 +352,6 @@ The rest of this paper is organized as follows--- Section \ref*{motivation} offe
 \subsection{Tuning Also improves Prediction Accuracy (?)}
 \subsection{SMOTE\textit{ing}+Tuning improves Prediction Accuracy (?)}
 \section{Conclusions}
-
+\bibliographystyle{IEEEtran}
+\bibliography{Ref}
 \end{document}

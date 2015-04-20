@@ -245,5 +245,10 @@ def _test2(isLatex=True):
 
 
 if __name__ == '__main__':
-  #   _testRaw()
-  eval(cmd())
+  for file in ['ant', 'camel', 'ivy',
+               'jedit', 'log4j',
+               'lucene', 'poi', 'synapse', 'velocity',
+               'xalan']:
+    _testRaw(file)
+
+#   eval(cmd())

@@ -40,14 +40,16 @@ def settings(**d):
       np=10,
       k=100,
       tiny=0.01,
-      de=o(np=5,
-           iter=5,
-           epsilon=1.01,
-           N=5,
-           f=0.5,
-           cf=0.4,
-           lives=10)
-  ).update(**d)
+      de=o(
+          np=5,
+          iter=5,
+          epsilon=1.01,
+          N=3,
+          f=0.5,
+          cf=0.4,
+          maxIter=20,
+          lives=5)).update(
+      **d)
 
 The = settings()
 
@@ -72,11 +74,11 @@ class diffEvol(object):
     for _ in xrange(N):
       self.frontier.append(self.new())
 
-  def extrapolate(self, xbest, l1, l2, l3, l4):
+  def extrapolate(self, xbest, l1, l2):
     try:
       return [max(d[0],
-                  min(d[1], y + The.de.f * (z + a - b - c))) for y, z, a,
-              b, c, d in zip(xbest, l1, l2, l3, l4, self.model.indep())]
+                  min(d[1], y + The.de.f * (z - a))) for y, z, a,
+              d in zip(xbest, l1, l2, self.model.indep())]
     except TypeError:
       set_trace()
 
@@ -88,7 +90,7 @@ class diffEvol(object):
       seen.append(f(x))
       return x
     seen = [f(one)]
-    return oneOther(), oneOther(), oneOther(), oneOther()
+    return oneOther(), oneOther()
 
  # def top234(self, one, pop):
 
@@ -108,13 +110,14 @@ class diffEvol(object):
   def DE(self):
     self.initFront(The.de.N)
     lives = The.de.lives
+    maxIter = The.de.maxIter
     while lives > 0:
       better = False
       self.xbest = self.sortbyscore()[0]
       for pos, val in enumerate(self.frontier):
         lives -= 1
-        l1, l2, l3, l4 = self.one234(val, self.frontier)
-        new = self.extrapolate(self.xbest, l1, l2, l3, l4)
+        l1, l2 = self.one234(val, self.frontier)
+        new = self.extrapolate(self.xbest, l1, l2)
         if self.dominates(new, val):
           self.frontier.pop(pos)
           self.frontier.insert(pos, new)
@@ -124,6 +127,7 @@ class diffEvol(object):
             self.xbest = new
           # print(self.model.depen(new))
         elif self.dominates(val, new):
+          lives -= 1
           better = False
           if self.model.depen(val) > self.model.depen(self.xbest):
             self.xbest = val
@@ -134,6 +138,7 @@ class diffEvol(object):
             self.xbest = new
           better = True
           lives += 1
+
 #      print(self.model.depen(self.xbest))
     return self.xbest
 
@@ -143,18 +148,21 @@ class tuneRF(object):
 
   def __init__(self, data):
     self.data = data
-    self.train = createTbl(data[-2:-1])
-    self.test = createTbl([data[-1]])
+    self.train = createTbl(data[:-1],
+                           _smote=False,
+                           isBin=True,
+                           bugThres=1,
+                           duplicate=True)
+    self.test = createTbl([data[-1]], isBin=True, bugThres=2)
 #   set_trace()
 
   def depen(self, rows):
-    mod = rforest(self.train, self.test, tunings=rows  # n_est, max_feat, mss, msl
-                  , smoteit=True)
+    mod = rforest(self.train, self.test, tunings=rows, smoteit=False)
     g = _Abcd(before=Bugs(self.test), after=mod, show=False)[-1]
     return g
 
   def indep(self):
-    return [(10, 1e3)  # n_estimators
+    return [(10, 100)  # n_estimators
             , (1, 100)  # max_features
             , (1, 10)  # min_samples_leaf
             , (2, 10)  # min_samples_split
@@ -205,11 +213,15 @@ class tuneCART(object):
 
   def __init__(self, data):
     self.data = data
-    self.train = createTbl(data[:-1], isBin=True)
-    self.test = createTbl([data[-1]], isBin=True)
+    self.train = createTbl(data[-2:-1],
+                           _smote=False,
+                           isBin=True,
+                           bugThres=1,
+                           duplicate=True)
+    self.test = createTbl([data[-1]], isBin=True, bugThres=1)
 
   def depen(self, rows):
-    mod = CART(self.train, self.test, tunings=rows, smoteit=True)
+    mod = CART(self.train, self.test, tunings=rows, smoteit=False)
     g = _Abcd(before=Bugs(self.test), after=mod, show=False)[-1]
     return g
 
