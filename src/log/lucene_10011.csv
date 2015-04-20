@@ -1,0 +1,4 @@
+Treatment, TP, , FP, , FN, , TN, , Accuracy, , Recall, , Fallout, , Precision, , F, , G,,
+, med, irq, med, irq, med, irq, med, irq, med, irq, med, irq, med, irq, med, irq, med, irq, med, irq
+RF, 127.0, 4.0, 59.0, 2.0, 76.0, 4.0, 78.0, 2, 60.5, 1, 63.0, 2, 43.0, 2, 68.0, 1, 65.5, 1, 60.0, 1
+RF(SMOTE), 108.0, 6.0, 47.5, 8.0, 95.0, 6.0, 89.5, 8, 59.0, 0, 53.0, 3, 35.0, 6, 70.0, 3, 61.0, 1, 59.5, 1

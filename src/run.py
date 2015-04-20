@@ -158,7 +158,7 @@ def _test(file, isLatex=True):
     for t in tune:
       for s in smote:
         R = run(
-            reps=1,
+            reps=10,
             pred=pred,
             dataName=file,
             _tuneit=t,

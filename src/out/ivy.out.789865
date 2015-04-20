@@ -1,0 +1,39 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2c3-6>
+Subject: Job 789865: <tcsh save ivy 8559> Done
+
+Job <tcsh save ivy 8559> was submitted from host <login02> by user <rkrish11> in cluster <henry2>.
+Job was executed on host(s) <2*n2c3-6>, in queue <long>, as user <rkrish11> in cluster <henry2>.
+                            <2*n2c3-1>
+</home/rkrish11> was used as the home directory.
+</home/rkrish11/git/CSC712-Software-Testing/src> was used as the working directory.
+Started at Sat Apr 18 23:42:34 2015
+Results reported at Sun Apr 19 16:30:42 2015
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tcsh save ivy 8559
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :  60399.92 sec.
+    Max Memory :       102 MB
+    Max Swap   :       718 MB
+
+    Max Processes  :         4
+    Max Threads    :         5
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/ivy.err.789865> for stderr output of this job.
+

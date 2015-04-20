@@ -143,7 +143,7 @@ class tuneRF(object):
 
   def __init__(self, data):
     self.data = data
-    self.train = createTbl(data[:-1])
+    self.train = createTbl(data[-2:-1])
     self.test = createTbl([data[-1]])
 #   set_trace()
 
