@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  19 APR 2015 22:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  20 APR 2015 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -24,13 +24,17 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 -- Using 8.5in x 11in (letter) paper.
 -- Using PDF output.
 \@IEEEnormalsizeunitybaselineskip=\dimen104
--- This is a 12 point document.
+-- This is a 10 point document.
 \CLASSINFOnormalsizebaselineskip=\dimen105
 \CLASSINFOnormalsizeunitybaselineskip=\dimen106
 \IEEEnormaljot=\dimen107
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <6> not available
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <7> not available
 (Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
@@ -44,21 +48,21 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <11> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <11> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14> not available
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <14> not available
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <17> not available
 (Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <20> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <22> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <22> not available
 (Font)              Font shape `OT1/ppl/b/it' tried instead on input line 726.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 726.
@@ -230,25 +234,42 @@ Package: tabulary 2008/12/01 v0.9 tabulary package (DPC)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/multirow/bigstrut.sty
 \bigstrutjot=\dimen143
 )
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen144
+\Gin@req@width=\dimen145
+)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
 \c@tracingmulticols=\count110
 \mult@box=\box29
-\multicol@leftmargin=\dimen144
+\multicol@leftmargin=\dimen146
 \c@unbalance=\count111
 \c@collectmore=\count112
 \doublecol@number=\count113
 \multicoltolerance=\count114
 \multicolpretolerance=\count115
-\full@width=\dimen145
-\page@free=\dimen146
-\premulticols=\dimen147
-\postmulticols=\dimen148
+\full@width=\dimen147
+\page@free=\dimen148
+\premulticols=\dimen149
+\postmulticols=\dimen150
 \multicolsep=\skip50
 \multicolbaselineskip=\skip51
 \partial@page=\box30
 \last@line=\box31
-\maxbalancingoverflow=\dimen149
+\maxbalancingoverflow=\dimen151
 \mult@rightbox=\box32
 \mult@grightbox=\box33
 \mult@gfirstbox=\box34
@@ -272,9 +293,9 @@ Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
 \@tempa=\box52
 \c@columnbadness=\count116
 \c@finalcolumnbadness=\count117
-\last@try=\dimen150
-\multicolovershoot=\dimen151
-\multicolundershoot=\dimen152
+\last@try=\dimen152
+\multicolovershoot=\dimen153
+\multicolundershoot=\dimen154
 \mult@nat@firstbox=\box53
 \colbreak@box=\box54
 \mc@col@check@num=\count118
@@ -314,11 +335,11 @@ Package: amstext 2000/06/29 v2.01
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks21
-\ex@=\dimen153
+\ex@=\dimen155
 ))
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen154
+\pmbraise@=\dimen156
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
@@ -335,7 +356,7 @@ LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box55
 \strutbox@=\box56
-\big@size=\dimen155
+\big@size=\dimen157
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count125
@@ -348,12 +369,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \column@=\count130
 \maxfields@=\count131
 \andhelp@=\toks23
-\eqnshift@=\dimen156
-\alignsep@=\dimen157
-\tagshift@=\dimen158
-\tagwidth@=\dimen159
-\totwidth@=\dimen160
-\lineht@=\dimen161
+\eqnshift@=\dimen158
+\alignsep@=\dimen159
+\tagshift@=\dimen160
+\tagwidth@=\dimen161
+\totwidth@=\dimen162
+\lineht@=\dimen163
 \@envbody=\toks24
 \multlinegap=\skip53
 \multlinetaggap=\skip54
@@ -363,7 +384,7 @@ LaTeX Info: Redefining \] on input line 2666.
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/preprint/balance.sty
 Package: balance 1999/02/23 4.3 (PWD)
-\oldvsize=\dimen162
+\oldvsize=\dimen164
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/sttools/flushend.sty
 Package: flushend 2014/04/24 v2.2 Balancing columns in twocolumn mode
@@ -371,10 +392,10 @@ Package: flushend 2014/04/24 v2.2 Balancing columns in twocolumn mode
 \flushend@@lastskip@b=\skip56
 \flushend@@lastskip@c=\skip57
 \flushend@@penalty@a=\count132
-\flushend@@lastkern@a=\dimen163
-\var@@temp@spread=\dimen164
-\var@@temp@a=\dimen165
-\flushend@@page@rule=\dimen166
+\flushend@@lastkern@a=\dimen165
+\var@@temp@spread=\dimen166
+\var@@temp@a=\dimen167
+\flushend@@page@rule=\dimen168
 \flushend@@varbox@a=\box57
 \flushend@@varbox@c=\box58
 \flushend@@tempbox@a=\box59
@@ -402,7 +423,7 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 (/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2014/03/24 3.9k Babel common definitions
 \babel@savecnt=\count135
-\U@D=\dimen167
+\U@D=\dimen169
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
@@ -497,7 +518,7 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen168
+\@linkdim=\dimen170
 \Hy@linkcounter=\count154
 \Hy@pagecounter=\count155
 
@@ -523,10 +544,10 @@ Package hyperref Info: Bookmarks ON on input line 4688.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen169
+\XeTeXLinkMargin=\dimen171
 \Fld@menulength=\count158
-\Field@Width=\dimen170
-\Fld@charsize=\dimen171
+\Field@Width=\dimen172
+\Fld@charsize=\dimen173
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -555,16 +576,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip58
 )
-Package hyperref Info: Option `colorlinks' set `false' on input line 30.
+Package hyperref Info: Option `colorlinks' set `false' on input line 31.
 
 
 Package hyperref Warning: Unexpected value for option `hidelinks'
-(hyperref)                is ignored on input line 30.
+(hyperref)                is ignored on input line 31.
 
 (./Preliminary.aux
-
-LaTeX Warning: Label `fig:ck' multiply defined.
-
 
 LaTeX Warning: Label `Camel' multiply defined.
 
@@ -616,71 +634,75 @@ LaTeX Warning: Label `sub@Camel' multiply defined.
 )
 \openout1 = `Preliminary.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 42.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <14> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <22> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <22> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 35.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 42.
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count164
-\scratchdimen=\dimen172
+\scratchdimen=\dimen174
 \scratchbox=\box63
 \nofMPsegments=\count165
 \nofMParguments=\count166
 \everyMPshowfont=\toks28
 \MPscratchCnt=\count167
-\MPscratchDim=\dimen173
+\MPscratchDim=\dimen175
 \MPnumerator=\count168
 \makeMPintoPDFobject=\count169
 \everyMPtoPDFconversion=\toks29
@@ -689,9 +711,25 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 \AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring OFF on input line 35.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+Package hyperref Info: Link coloring OFF on input line 42.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -699,34 +737,34 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count170
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 42.
+LaTeX Info: Redefining \pageref on input line 42.
+LaTeX Info: Redefining \nameref on input line 42.
 
 (./Preliminary.out) (./Preliminary.out)
 \@outlinefile=\write3
 \openout3 = `Preliminary.out'.
 
 
-** ATTENTION: \IEEEcompsoctitleabstractindextext is deprecated (line 48). Use \
+** ATTENTION: \IEEEcompsoctitleabstractindextext is deprecated (line 55). Use \
 IEEEtitleabstractindextext instead.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 57.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 64.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 57.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 57.
-LaTeX Font Info:    Try loading font information for U+pzd on input line 57.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 64.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 64.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 64.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 58.
-LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <14> not available
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 58.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 65.
+LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <12> not available
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 65.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -734,99 +772,144 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-
-LaTeX Warning: Reference `motivation' on page 2 undefined on input line 77.
-
-
-LaTeX Warning: Reference `setup' on page 2 undefined on input line 77.
+Underfull \hbox (badness 1776) in paragraph at lines 81--82
+[]\OT1/ptm/b/n/10 RQ3: Is tun-ing per-formed in con-junc-tion with
+ []
 
 
-LaTeX Warning: Reference `expt' on page 2 undefined on input line 77.
+LaTeX Warning: Reference `motivation' on page 2 undefined on input line 86.
 
 
-LaTeX Warning: Reference `concl' on page 2 undefined on input line 77.
+LaTeX Warning: Reference `setup' on page 2 undefined on input line 86.
 
 
-LaTeX Warning: Reference `future' on page 2 undefined on input line 77.
+LaTeX Warning: Reference `expt' on page 2 undefined on input line 86.
 
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 80.
+
+LaTeX Warning: Reference `concl' on page 2 undefined on input line 86.
+
+
+LaTeX Warning: Reference `future' on page 2 undefined on input line 86.
+
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 89.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+
+Underfull \hbox (badness 7576) in paragraph at lines 101--109
+[]\OT1/ptm/m/n/10 Statistical clas-si-fiers: Lin-ear dis-crim-i-nant anal-y-sis
+,
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 101--109
+\OT1/ptm/m/n/10 Quadratic dis-crim-i-nant anal-y-sis, Lo-gis-tic re-gres-sion,
+ []
+
+
+Overfull \hbox (12.79999pt too wide) in paragraph at lines 99--130
+[][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <14> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 138.
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+<SMOTE_pseudocode.jpg, id=94, 1368.312pt x 1530.6786pt>
+File: SMOTE_pseudocode.jpg Graphic file (type jpg)
+
+<use SMOTE_pseudocode.jpg>
+Package pdftex.def Info: SMOTE_pseudocode.jpg used on input line 142.
+(pdftex.def)             Requested size: 252.0pt x 281.88652pt.
+
+Overfull \hbox (7.11179pt too wide) in paragraph at lines 149--174
+ [] 
+ []
+
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 168.
+put line 230.
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 233--256
+Overfull \hbox (1.83997pt too wide) in paragraph at lines 295--318
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--256
+Underfull \hbox (badness 10000) in paragraph at lines 295--318
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 257--279
+Overfull \hbox (1.83997pt too wide) in paragraph at lines 319--341
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--279
+Underfull \hbox (badness 10000) in paragraph at lines 319--341
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 280--302
+Overfull \hbox (1.83997pt too wide) in paragraph at lines 342--364
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--302
+Underfull \hbox (badness 10000) in paragraph at lines 342--364
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 303--325
+Overfull \hbox (1.83997pt too wide) in paragraph at lines 365--387
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--325
+Underfull \hbox (badness 10000) in paragraph at lines 365--387
 
  []
 
 
-Overfull \hbox (2.06996pt too wide) in paragraph at lines 327--349
+Overfull \hbox (1.83997pt too wide) in paragraph at lines 389--411
 []$[]$ $[]$ 
  []
 
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 351.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 351.
-
-Underfull \hbox (badness 6859) in paragraph at lines 353--353
- \OT1/phv/b/n/12 4.3 SMOTE\OT1/phv/b/sl/12 ing\OT1/phv/b/n/12 +Tuning im-proves
- Pre-dic-
- []
-
+LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <10> not available
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 413.
+LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <10> not available
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 413.
 (./Preliminary.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-[3] [4])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 357.
+[3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./SMOTE_pseudocode.jpg>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 419.
 - LAST -
 Extra skip:0.0pt
-Left:40.17pt/0.1259pt
-Right:40.17pt/1.94843pt
-Output:40.17pt
+Left:255.0pt/1.73193pt
+Right:255.0pt/1.73193pt
+Output:255.0pt
  [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 357.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 419.
  (./Preliminary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 357.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 357.
-Package rerunfilecheck Info: File `Preliminary.out' has not changed.
-(rerunfilecheck)             Checksum: 26CC90874079E7500673860E58AC20AC;896.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 419.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 419.
 
+
+Package rerunfilecheck Warning: File `Preliminary.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Preliminary.out':
+(rerunfilecheck)             Before: E1994F54850B1576D5BAAF81D12C037F;705
+(rerunfilecheck)             After:  CE44F6AB6FFBAC8243BCD52858DCE050;704.
 
 LaTeX Warning: There were undefined references.
 
@@ -835,33 +918,39 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9926 strings out of 493117
- 148939 string characters out of 6135433
- 325377 words of memory out of 5000000
- 13191 multiletter control sequences out of 15000+600000
- 75738 words of font info for 142 fonts, out of 8000000 for 9000
+ 10233 strings out of 493117
+ 153898 string characters out of 6135433
+ 332886 words of memory out of 5000000
+ 13466 multiletter control sequences out of 15000+600000
+ 79940 words of font info for 146 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,15n,40p,1174b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/f
-onts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
-ype1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/t
-imes/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri
-8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on Preliminary.pdf (5 pages, 167900 bytes).
+pdfTeX warning (dest): name{figure.caption.7} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section*.10} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fon
+ts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/tim
+es/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a
+.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on Preliminary.pdf (5 pages, 3453149 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 210 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

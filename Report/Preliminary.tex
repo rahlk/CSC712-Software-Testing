@@ -1,4 +1,4 @@
-\documentclass[12pt, journal, compsoc]{IEEEtran}
+\documentclass[10pt, journal, compsoc]{IEEEtran}
 \usepackage{colortbl}
 \usepackage{booktabs}
 \usepackage{subcaption}
@@ -7,7 +7,8 @@
 \usepackage{algpseudocode}
 \usepackage{tabulary}
 \usepackage{bigstrut}
-\linespread{1.25}
+\usepackage{graphicx}
+\linespread{1}
 \setlength\fboxsep{1pt}
 \setlength\fboxrule{1pt}
 \usepackage{multicol}
@@ -28,8 +29,14 @@
   colorlinks = false,
   hidelinks = true
 }
+\newcommand{\bi}{\begin{itemize}}
+  \newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+  \newcommand{\ee}{\end{enumerate}}
+\newcommand{\tion}[1]{\textsection\ref{sec:#1}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
 \setlength{\parindent}{0em}
-\setlength{\parskip}{1.1em}
+\setlength{\parskip}{1em}
 
 
 \begin{document}
@@ -61,7 +68,9 @@ Defect prediction is the study of identifying which software \textit{modules} ar
 
 All this leads use to one key conclusion: \textit{Find Bugs Early!} For this we need efficient code analysis measures. We also want them to be generic in that they must be applicable across several projects. Moreover, platforms such as github has over 9 million users, hosting over 21.1 million repositories. Faced with such a massive code base we need these to also be easy to compute. Static code measure is one such tool, it can automatically extracted from a code base with very little effort even for very large software systems~\cite{nagappan2005static}. Such measures reduce the effort required for defect prediction. As \cite{tosun2010ai} and \cite{ostrand2004bugs} have shown, if inspection teams used defect predictors to identify  issues, they can find 80\% to 88\% of the defects after inspecting only 20\% to 25\% of the code.
 
-With these code analysis measure, we can make use of classification tools form machine learning, such as CART and Random Forest, to detect the presence of defects. However, notice the skewness in the above result, \textit{ 80\% of the problems reside in only 20\% of the modules}. This is a key difficulty often faced in software defect prediction. In other words we are trying to predict the occurrence of a defect in a software most of whose modules work just fine. Therefore the classification tool that is used is quite often unable to detect the faulty modules. This is, however, a very well known issue faced by several machine learning experts. In that context, this issue is referred to as class imbalanced in datasets. A data set that is heavily skewed toward the majority class will sometimes generate classifiers that never predict the minority class. In software defect prediction, this bias often makes the classifier highly accurate in predicting non-defects, and totally useless for predicting defects.
+With these code analysis measures, we can make use of classification tools form machine learning, such as CART and Random Forest, to detect the presence of defects. However, notice the skewness in the above result, \textit{ 80\% of the problems reside in only 20\% of the modules}. This is a key difficulty often faced in software defect prediction. In other words we are trying to predict the occurrence of a defect in a software most of whose modules work just fine. 
+
+Therefore the classification tool that is used is quite often unable to detect the faulty modules. This is, however, a very well known issue faced by several machine learning experts. In that context, this issue is referred to as class imbalanced in datasets. A data set that is heavily skewed toward the majority class will sometimes generate classifiers that never predict the minority class. In software defect prediction, this bias often makes the classifier highly accurate in predicting non-defects, and totally useless for predicting defects.
 
 One of the other issue in data mining is the choice of parameters that run these classification tools. The parameters of these data miners are rarely tested for the application they are being applied for. A common notion among it's users is that the space of options for these parameters has been well explored by experts and the best settings have been used.
 
@@ -78,10 +87,65 @@ The rest of this paper is organized as follows--- Section \ref*{motivation} offe
 \section{Background Notes}
 \label{back}
 \subsection{Defect Prediction}
-\subsection{SMOTE}
+The previous section presented key finding from literature that seem to conclude that defect prediction is quite important. This section introduces the idea of using instance based approach to identify defects. Assessing the quality of solutions to a real-world problem can be extremely hard~\cite{menzies2005xomo}. In several software engineering applications, researchers have models that can emulate the problem, for instance there is the COCOMO effort model~\cite[p29-57]{boehm2009software}, the COQUALMO defect model~\cite[p254-268]{boehm2009software}, Madachy’s schedule risk model~\cite[p284-291]{boehm2009software}, to name a few. Using these models it is possible to examine several scenarios in a short period of time, and this can be done in a reproducible manner. However, models aren't always the solution, as we shall see. 
+
+There exist several problems where models are hard to obtain, or the input and output are related by complex connections that simply cannot be modeled in a reliable manner, or generation of reliable models take prohibitively long~\cite{Ludewig2003}. Software defect prediction is an excellent example of such a case. Models that incorporate all the intricate issues that may lead defects in a product is extremely hard to come by. Moreover, it has been shown that models for different regions within the same data can have very different properties \cite{localvsglobal}. This makes it extremely hard for one to design planning systems that are capable of mitigating these defects.
+
+An alternative is the use of an instance based approach, an subset of case based reasoning strategy, instead of the conventional model based approach. Instance based approaches are used extensively by the effort estimation community. For more reference, see ~\cite{keung2008analogy, 6600685, walkerden1999empirical, shepperd1997estimating, kocaguneli2010use}. This approach has been proposed as an alternative to closed form mathematical models or other modeling methods such as regression \cite{keung2008analogy}. There are several other reasons for instance based approaches being a useful tool, see~\cite{6600685}. As pointed out by~\cite{walkerden1999empirical} it can be used with partial knowledge of the target project at an early stage which could be a very useful tool in preventing software defects. Instance based approaches are also rather robust in handling cases with sparse samples \cite{1438374}. All these features are desirable and suggest that instance-based approach is a useful adjunct to traditional model based approach. 
+ 
+A recent IEEE TSE paper by Lessmann et al.~\cite{lessmann} compared 21 different learners for software defect prediction, listed in figure \ref{fig:lessmann}.
+
+\begin{figure}[htbp!]
+  \begin{tabular}{|p{\linewidth}|}\hline
+\begin{itemize}
+\item Statistical classifiers:
+Linear    discriminant analysis,
+Quadratic discriminant analysis,
+Logistic regression,
+Naive Bayes,
+Bayesian networks,
+Least-angle regression,
+Relevance vector machine,
+
+\item \textit{Nearest neighbor methods:} k-nearest neighbor, K-Star
+
+\item {\em Neural networks:} Multi-Layer Perceptron, Radial bias functions,
+
+\item \textit{Support vector machine-based classifiers:}
+Support vector machine,
+Lagrangian SVM
+Least squares SVM,
+Linear programming,
+Voted perceptron,
+
+\item \textit{Decision-tree approaches:}
+C4.5,
+CART,
+Alternating DTs
+\item \textit{Ensemble methods:}
+\textbf{Random Forest},
+Logistic Model Tree.
+\end{itemize}\\\hline
+\end{tabular}
+\caption{Software Defect Predictors}\label{fig:lessmann}
+\end{figure}
+
+
+They concluded that Random Forrest was the best method, CART being the worst.
+
+Random Forest is an ensemble learning scheme that constructs a number of decision trees at the training time, for a test instance it outputs the mode of the classes of individual tree. It's patent from how random forest operates that the prediction will suffer if there is an imbalance in classes during the training. Unfortunately, the data sets explored here do suffer from severe skewness, as highlighted in Figure~\ref{fig:attr}. 
+
+\subsubsection*{\Large{SMOTE}}
+A study conducted by Pelayo and Dick~\cite{smote2} inspected this issue. They showed that the SMOTE technique~\cite{smote} can be used to improve recognition of defect-prone modules. SMOTE is an over-sampling technique in which the minority class is over-sampled by creating “synthetic” examples. This over sampling technique works by introducing synthetic examples for each minority class sample along the plane connecting any (all) of the k minority class nearest neighbors. This is followed by randomly removing samples from the majority class population until there is set number of samples. Finally, the classifiers are learned on the datasets prepared by SMOTE\textit{ing} the minority class and decimating the majority class.
+
+\begin{figure}[htbp!]
+  \includegraphics[width=\linewidth]{SMOTE_pseudocode.jpg}
+  \caption{The Pseudocode for SMOTE. From \cite{smote}}
+\end{figure}
+
 \begin{figure}[!htbp]
   \renewcommand{\baselinestretch}{1.25}\begin{center}
-    {\tiny
+    {\scriptsize
       \begin{tabular}{l@{~~~}l@{~~~}l@{~~~}l@{~~~}c@{~~~}l@{~~~}l@{~~~}}
         \hline
         \rowcolor{lightgray}
@@ -108,11 +172,9 @@ The rest of this paper is organized as follows--- Section \ref*{motivation} offe
         Xalan & xal &2.5, 2.6 &2.7 & 1688 & 798 & 47.27\\\hline
       \end{tabular}}
     \end{center}
-    \caption{Attributes of the defect data sets}\label{fig:ck}
+    \caption{Attributes of the defect data sets}\label{fig:attr}
   \end{figure}
 
-\subsection{The Classifiers}
-\subsection{Differential Evolution}
 \begin{algorithm}[htbp!]
   
   \scriptsize
