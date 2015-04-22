@@ -129,4 +129,98 @@ N.~V. Chawla, K.~W. Bowyer, L.~O. Hall, and W.~P. Kegelmeyer, ``Smote:
   synthetic minority over-sampling technique,'' \emph{Journal of artificial
   intelligence research}, vol.~16, no.~1, pp. 321--357, 2002.
 
+\bibitem{salt00}
+A.~Saltelli, K.~Chan, E.~M. Scott \emph{et~al.}, \emph{Sensitivity
+  analysis}.\hskip 1em plus 0.5em minus 0.4em\relax Wiley New York, 2000,
+  vol.~1.
+
+\bibitem{fea02a}
+M.~Feather and T.~Menzies, ``Converging on the optimal attainment of
+  requirements,'' in \emph{IEEE Joint Conference On Requirements Engineering
+  ICRE'02 and RE'02, 9-13th September, University of Essen, Germany}, 2002,
+  available from \url{http://menzies.us/pdf/02re02.pdf}.
+
+\bibitem{me07f}
+T.~Menzies, O.~El-Rawas, J.~Hihn, M.~Feather, B.~Boehm, and R.~Madachy, ``The
+  business case for automated software engineerng,'' in \emph{ASE '07:
+  Proceedings of the twenty-second IEEE/ACM international conference on
+  Automated software engineering}.\hskip 1em plus 0.5em minus 0.4em\relax New
+  York, NY, USA: ACM, 2007, pp. 303--312, available from
+  \url{http://menzies.us/pdf/07casease-v0.pdf}.
+
+\bibitem{storn97}
+R.~Storn and K.~Price, ``Differential evolution--a simple and efficient
+  heuristic for global optimization over continuous spaces,'' \emph{Journal of
+  global optimization}, vol.~11, no.~4, pp. 341--359, 1997.
+
+\bibitem{chiha12}
+I.~Chiha, J.~Ghabi, and N.~Liouane, ``Tuning pid controller with
+  multi-objective differential evolution,'' in \emph{Communications Control and
+  Signal Processing (ISCCSP), 2012 5th International Symposium on}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2012, pp. 1--4.
+
+\bibitem{om07}
+M.~G. Omran, A.~P. Engelbrecht, and A.~Salman, ``Self-adaptive barebones
+  differential evolution,'' in \emph{Evolutionary Computation, 2007. CEC 2007.
+  IEEE Congress on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2007, pp.
+  2858--2865.
+
+\bibitem{Fu}
+W.~Fu and T.~Menzies, ``{Analytics Without Parameter Tuning Considered
+  Harmful?}''
+
+\bibitem{Coello05}
+\BIBentryALTinterwordspacing
+T.~Robic and B.~Filipic, ``\BIBforeignlanguage{English}{Demo: Differential
+  evolution for multiobjective optimization},'' in
+  \emph{\BIBforeignlanguage{English}{Evolutionary Multi-Criterion
+  Optimization}}, ser. Lecture Notes in Computer Science, C.~Coello,
+  A.~Hernández~Aguirre, and E.~Zitzler, Eds.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer Berlin Heidelberg, 2005, vol. 3410, pp. 520--533.
+  [Online]. Available: \url{http://dx.doi.org/10.1007/978-3-540-31880-4_36}
+\BIBentrySTDinterwordspacing
+
+\bibitem{zhang07}
+\BIBentryALTinterwordspacing
+Q.~Zhang and H.~Li, ``Moea/d: A multiobjective evolutionary algorithm based on
+  decomposition,'' \emph{Trans. Evol. Comp}, vol.~11, no.~6, pp. 712--731, Dec.
+  2007. [Online]. Available: \url{http://dx.doi.org/10.1109/TEVC.2007.892759}
+\BIBentrySTDinterwordspacing
+
+\bibitem{5583335}
+W.~Huang and H.~Li, ``On the differential evolution schemes in moea/d,'' in
+  \emph{Natural Computation (ICNC), 2010 Sixth International Conference on},
+  vol.~6, Aug 2010, pp. 2788--2792.
+
+\bibitem{sk}
+N.~Mittas and L.~Angelis, ``Ranking and clustering software cost estimation
+  models through a multiple comparisons algorithm,'' \emph{Software
+  Engineering, IEEE Transactions on}, vol.~39, no.~4, pp. 537--551, 2013.
+
+\bibitem{shepperd12a}
+M.~J. Shepperd and S.~G. MacDonell, ``Evaluating prediction systems in software
+  project estimation,'' \emph{Information {\&} Software Technology}, vol.~54,
+  no.~8, pp. 820--827, 2012.
+
+\bibitem{kampenes07}
+V.~B. Kampenes, T.~Dyb{\aa}, J.~E. Hannay, and D.~I.~K. Sj{\o}berg, ``A
+  systematic review of effect size in software engineering experiments,''
+  \emph{Information {\&} Software Technology}, vol.~49, no. 11-12, pp.
+  1073--1086, 2007.
+
+\bibitem{kocharm13}
+E.~Kocaguneli, T.~Zimmermann, C.~Bird, N.~Nagappan, and T.~Menzies,
+  ``Distributed development considered harmful?'' in \emph{ICSE}, 2013, pp.
+  882--890.
+
+\bibitem{arcuri11}
+A.~Arcuri and L.~Briand, ``A practical guide for using statistical tests to
+  assess randomized algorithms in software engineering,'' in \emph{ICSE'11},
+  2011, pp. 1--10.
+
+\bibitem{efron93}
+B.~T. Efron, ``Rj (1993).{\guillemotleft}an introduction to the
+  bootstrap{\guillemotright},'' \emph{Monograps on Statistics and Applied
+  Probability}, vol.~57.
+
 \end{thebibliography}
