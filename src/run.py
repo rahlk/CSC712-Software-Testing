@@ -29,6 +29,40 @@ def write(str):
   sys.stdout.flush()
 
 
+class ABCD():
+
+  "Statistics Stuff, confusion matrix, all that jazz..."
+
+  def __init__(self, before, after):
+    self.actual = before
+    self.predicted = after
+    self.TP, self.TN, self.FP, self.FN = 0, 0, 0, 0
+    self.abcd()
+
+  def abcd(self):
+    for a, b in zip(self.actual, self.predicted):
+      if a == b:
+        if b == 1:
+          self.TP += 1
+        else:
+          self.TN += 1
+      else:
+        if b == 1:
+          self.FP += 1
+        else:
+          self.FN += 1
+
+  def all(self):
+    Sen = self.TP / (self.TP + self.FN)
+    Spec = self.TN / (self.TN + self.FP)
+    Prec = self.TP / (self.TP + self.FP)
+    Acc = (self.TP + self.TN) / (self.TP + self.FN + self.TN + self.FP)
+    F1 = 2 * self.TP / (2 * self.TP + self.FP + self.FN)
+    G = 2 * Sen * Spec / (Sen + Spec)
+    G1 = Sen * Spec / (Sen + Spec)
+    return Sen, Spec, Prec, Acc, F1, G
+
+
 class run():
 
   def __init__(
@@ -38,7 +72,7 @@ class run():
           _n=-1,
           _tuneit=False,
           dataName=None,
-          reps=10):
+          reps=8):
 
     self.dataName = dataName
     self.pred = pred
@@ -129,15 +163,15 @@ class run():
                          tunings=self.tunedParams,
                          smoteit=self._smoteit)
 
-      out.append(_Abcd(before=actual, after=before))
+      out.append(ABCD(before=actual, after=before).all())
 
     med = [np.median([o[i] for o in out]) for i in xrange(len(out[0]))]
     quart = [iqr([o[i] for o in out]) for i in xrange(len(out[0]))]
-    return str(self.pred.__doc__) + suffix, med, quart
+    return self.pred.__doc__ + suffix, med, quart
 
   def go1(self):
     predRows = []
-    train_DF = createTbl(self.train[self._n][-2:], isBin=True, bugThres=1)
+    train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
     actual = Bugs(train_DF)
     print(self.dataName,
           len(actual),
@@ -146,27 +180,26 @@ class run():
 #       with open('./raw/'+self.dataname, 'w+') as fwrite:
 
 
-def _test(file, isLatex=True):
-  tune = [False, True]
-  smote = [False, True]
-#   for file in ['ant', 'camel', 'ivy',
-#                'jedit', 'log4j',
-#                'lucene', 'poi', 'synapse', 'velocity',
-#                'xalan']:
-  E = []
-  for pred in [CART, rforest]:
-    for t in tune:
-      for s in smote:
-        R = run(
-            reps=10,
-            pred=pred,
-            dataName=file,
-            _tuneit=t,
-            _smoteit=s).go()
-        print(R)
-#           E.append(R)
-#
-#     rdivDemo(E, isLatex=isLatex)
+def _test(isLatex=True):
+  tune = [False]
+  smote = [True, False]
+  for file in ['ant', 'camel', 'ivy',
+               'jedit', 'log4j', 'lucene',
+               'poi', 'synapse', 'velocity',
+               'pbeans', 'xalan', 'xerces']:
+    E = []
+    for pred in [rforest, CART]:
+      for t in tune:
+        for s in smote:
+          R = run(
+              reps=10,
+              pred=pred,
+              dataName=file,
+              _tuneit=t,
+              _smoteit=s).go()
+
+          E.append(R)
+    rdivDemo(E, isLatex=isLatex)
 #     if isLatex:
 #       latex().postamble()
 #     else:
@@ -179,48 +212,17 @@ def say(a, b, c):
   write(a)
 
   for med, iqr in zip(b, c):
-    write(', ' + str(med) + ', ' + str(iqr))
+    write(',%0.2f' % (med))  # + ', ' + str(iqr))
 
   print('')
 
 
 def _testRaw(file):
-  tune = [False, True]
-  smote = [False, True]
-  print(
-      'Treatment,',
-      'TP,',
-      ',',
-      'FP,',
-      ',',
-      'FN,',
-      ',',
-      'TN,',
-      ',',
-      'Accuracy,',
-      ',',
-      'Recall,',
-      ',',
-      'Fallout,',
-      ',',
-      'Precision,',
-      ',',
-      'F,',
-      ',',
-      'G,'
-      ',')
-  print(
-      ',',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq,',
-      'med, irq')
+  tune = [False]
+  smote = [True, False]
+  print("##%s\n" % (file))
+  print('Dataset,', 'Pd,', '1-Pf,', 'Precision,', 'Accuracy,', 'F,', 'G')
+#   print(',', 8 * 'med, ', 'med')
   for pred in [rforest, CART]:
     for t in tune:
       for s in smote:
@@ -246,9 +248,9 @@ def _test2(isLatex=True):
 
 if __name__ == '__main__':
   for file in ['ant', 'camel', 'ivy',
-               'jedit', 'log4j',
-               'lucene', 'poi', 'synapse', 'velocity',
-               'xalan']:
+               'jedit', 'log4j', 'lucene',
+               'pbeans', 'poi', 'synapse',
+               'velocity', 'xalan', 'xerces']:
     _testRaw(file)
-
+#   _test()
 #   eval(cmd())
