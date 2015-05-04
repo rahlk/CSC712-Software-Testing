@@ -44,7 +44,7 @@ def settings(**d):
           np=5,
           iter=5,
           epsilon=1.01,
-          N=3,
+          N=10,
           f=0.5,
           cf=0.4,
           maxIter=20,
@@ -52,6 +52,38 @@ def settings(**d):
       **d)
 
 The = settings()
+
+
+class ABCD():
+
+  "Statistics Stuff, confusion matrix, all that jazz..."
+
+  def __init__(self, before, after):
+    self.actual = before
+    self.predicted = after
+    self.TP, self.TN, self.FP, self.FN = 0, 0, 0, 0
+    self.abcd()
+
+  def abcd(self):
+    for a, b in zip(self.actual, self.predicted):
+      if a == 1 and b == 1:
+        self.TP += 1
+      if a == 0 and b == 0:
+        self.TN += 1
+      if a == 0 and b == 1:
+        self.FP += 1
+      if a == 1 and b == 0:
+        self.FN += 1
+
+  def all(self):
+    Sen = self.TP / (self.TP + self.FN)
+    Spec = self.TN / (self.TN + self.FP)
+    Prec = self.TP / (self.TP + self.FP)
+    Acc = (self.TP + self.TN) / (self.TP + self.FN + self.TN + self.FP)
+    F1 = 2 * self.TP / (2 * self.TP + self.FP + self.FN)
+    G = 2 * Sen * Spec / (Sen + Spec)
+    G1 = Sen * Spec / (Sen + Spec)
+    return Sen, Spec, Prec, Acc, F1, G
 
 
 class diffEvol(object):
@@ -110,11 +142,12 @@ class diffEvol(object):
   def DE(self):
     self.initFront(The.de.N)
     lives = The.de.lives
-    maxIter = The.de.maxIter
-    while lives > 0:
+    iter = 0
+    while lives > 0 and iter < 30:
       better = False
       self.xbest = self.sortbyscore()[0]
       for pos, val in enumerate(self.frontier):
+        iter += 1
         lives -= 1
         l1, l2 = self.one234(val, self.frontier)
         new = self.extrapolate(self.xbest, l1, l2)
@@ -123,11 +156,13 @@ class diffEvol(object):
           self.frontier.insert(pos, new)
           better = True
           lives += 1
+          print(lives)
           if self.model.depen(new) > self.model.depen(self.xbest):
             self.xbest = new
           # print(self.model.depen(new))
         elif self.dominates(val, new):
           lives -= 1
+          print(lives)
           better = False
           if self.model.depen(val) > self.model.depen(self.xbest):
             self.xbest = val
@@ -138,6 +173,8 @@ class diffEvol(object):
             self.xbest = new
           better = True
           lives += 1
+          print(lives)
+        print('Iter = %d' % (iter))
 
 #      print(self.model.depen(self.xbest))
     return self.xbest
@@ -153,19 +190,20 @@ class tuneRF(object):
                            isBin=True,
                            bugThres=1,
                            duplicate=True)
-    self.test = createTbl([data[-1]], isBin=True, bugThres=2)
+    self.test = createTbl([data[-1]], isBin=True, bugThres=1)
 #   set_trace()
 
   def depen(self, rows):
-    mod = rforest(self.train, self.test, tunings=rows, smoteit=False)
-    g = _Abcd(before=Bugs(self.test), after=mod, show=False)[-1]
-    return g
+    mod = rforest(self.train, self.test, tunings=rows, smoteit=True)
+    prec = ABCD(before=Bugs(self.test), after=mod).all()[2]
+    return prec
 
   def indep(self):
-    return [(10, 100)  # n_estimators
+    return [(50, 150)  # n_estimators
             , (1, 100)  # max_features
             , (1, 10)  # min_samples_leaf
             , (2, 10)  # min_samples_split
+            , (2, 50)  # max_leaf_nodes
             ]
 
 
@@ -257,7 +295,8 @@ def tuner(model, data):
 
 if __name__ == '__main__':
   from timeit import time
-  data = explore(dir='../Data/')[0][0]  # Only training data to tune.
+  data = explore(dir='../Data/')[0][3]  # Only training data to tune.
+  print(data)
 #   set_trace()
   for m in [tuneRF]:
     t = time.time()

@@ -41,16 +41,14 @@ class ABCD():
 
   def abcd(self):
     for a, b in zip(self.actual, self.predicted):
-      if a == b:
-        if b == 1:
-          self.TP += 1
-        else:
-          self.TN += 1
-      else:
-        if b == 1:
-          self.FP += 1
-        else:
-          self.FN += 1
+      if a == 1 and b == 1:
+        self.TP += 1
+      if a == 0 and b == 0:
+        self.TN += 1
+      if a == 0 and b == 1:
+        self.FP += 1
+      if a == 1 and b == 0:
+        self.FN += 1
 
   def all(self):
     Sen = self.TP / (self.TP + self.FN)
@@ -124,8 +122,8 @@ class run():
     out_pred = [str(self.pred.__doc__) + suffix]
     for _ in xrange(self.reps):
       predRows = []
-      train_DF = createTbl(self.train[self._n], isBin=True, bugThres=1)
-      test_df = createTbl(self.test[self._n], isBin=True, bugThres=1)
+      train_DF = createTbl(self.train[self._n], isBin=True, bugThres=2)
+      test_df = createTbl(self.test[self._n], isBin=True, bugThres=2)
       actual = Bugs(test_df)
       before = self.pred(train_DF, test_df,
                          tunings=self.tunedParams,
@@ -181,14 +179,14 @@ class run():
 
 
 def _test(isLatex=True):
-  tune = [False]
-  smote = [True, False]
+  tune = [True, False]
+  smote = [True]
   for file in ['ant', 'camel', 'ivy',
                'jedit', 'log4j', 'lucene',
                'poi', 'synapse', 'velocity',
                'pbeans', 'xalan', 'xerces']:
     E = []
-    for pred in [rforest, CART]:
+    for pred in [rforest]:
       for t in tune:
         for s in smote:
           R = run(
@@ -218,12 +216,12 @@ def say(a, b, c):
 
 
 def _testRaw(file):
-  tune = [False]
-  smote = [True, False]
+  tune = [True, False]
+  smote = [True]
   print("##%s\n" % (file))
   print('Dataset,', 'Pd,', '1-Pf,', 'Precision,', 'Accuracy,', 'F,', 'G')
 #   print(',', 8 * 'med, ', 'med')
-  for pred in [rforest, CART]:
+  for pred in [rforest]:
     for t in tune:
       for s in smote:
         name, med, iqr = run(
@@ -248,9 +246,11 @@ def _test2(isLatex=True):
 
 if __name__ == '__main__':
   for file in ['ant', 'camel', 'ivy',
-               'jedit', 'log4j', 'lucene',
-               'pbeans', 'poi', 'synapse',
-               'velocity', 'xalan', 'xerces']:
+               'jedit', 'log4j']:
+    #           , 'pbeans',
+    #           'lucene',
+    #           'poi', 'synapse',
+    #           'velocity', 'xalan', 'xerces']:
     _testRaw(file)
 #   _test()
 #   eval(cmd())

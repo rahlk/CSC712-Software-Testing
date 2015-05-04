@@ -13,7 +13,7 @@ from random import choice, seed as rseed, random as rand
 import pandas as pd
 
 
-def SMOTE(data=None, k=5, atleast=10, atmost=51, bugIndx=2, resample=False):
+def SMOTE(data=None, k=5, atleast=100, atmost=100, bugIndx=2, resample=False):
 
   def Bugs(tbl):
     cells = [i.cells[-bugIndx] for i in tbl._rows]
@@ -81,6 +81,7 @@ def SMOTE(data=None, k=5, atleast=10, atmost=51, bugIndx=2, resample=False):
   newCells = []
   rseed(1)
   unique, counts = minority(data)
+  atmost = atleast
   rows = data._rows
   for u, n in zip(unique, counts):
     if n < atleast:
