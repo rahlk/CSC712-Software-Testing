@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  21 APR 2015 22:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  22 APR 2015 04:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -690,39 +690,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-
-LaTeX Warning: Reference `motivation' on page 2 undefined on input line 84.
-
-
-LaTeX Warning: Reference `setup' on page 2 undefined on input line 84.
-
-
-LaTeX Warning: Reference `expt' on page 2 undefined on input line 84.
-
-
-LaTeX Warning: Reference `concl' on page 2 undefined on input line 84.
-
-
-LaTeX Warning: Reference `future' on page 2 undefined on input line 84.
-
-
-Underfull \hbox (badness 2600) in paragraph at lines 84--85
-\OT1/ptm/m/n/12 pre-dic-tor. Sec-tion II[] high-lights the un-der-ly-ing
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--100
+Underfull \hbox (badness 10000) in paragraph at lines 94--102
 []\OT1/ptm/m/n/9 Statistical clas-si-fiers: Lin-ear dis-crim-i-nant anal-y-sis,
 
  []
 
 
-Underfull \hbox (badness 8151) in paragraph at lines 92--100
+Underfull \hbox (badness 8151) in paragraph at lines 94--102
 \OT1/ptm/m/n/9 Quadratic dis-crim-i-nant anal-y-sis, Lo-gis-tic re-gres-sion,
  []
 
@@ -733,7 +712,7 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
  [2]
-Overfull \hbox (6.66577pt too wide) in paragraph at lines 203--232
+Overfull \hbox (6.66577pt too wide) in paragraph at lines 205--234
  [][] 
  []
 
@@ -744,24 +723,24 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 3895) in paragraph at lines 238--239
+Underfull \hbox (badness 3895) in paragraph at lines 240--241
  []\OT1/ptm/m/it/12 SMOTE: [] \OT1/ptm/m/n/12 A study con-ducted by Pelayo and
  []
 
-<SMOTE_pseudocode.jpg, id=116, 1368.312pt x 1530.6786pt>
+<SMOTE_pseudocode.jpg, id=121, 1368.312pt x 1530.6786pt>
 File: SMOTE_pseudocode.jpg Graphic file (type jpg)
 
 <use SMOTE_pseudocode.jpg>
-Package pdftex.def Info: SMOTE_pseudocode.jpg used on input line 242.
+Package pdftex.def Info: SMOTE_pseudocode.jpg used on input line 244.
 (pdftex.def)             Requested size: 249.48138pt x 279.08377pt.
 
-Overfull \hbox (9.48138pt too wide) in paragraph at lines 241--244
+Overfull \hbox (9.48138pt too wide) in paragraph at lines 243--246
 [][] 
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 244.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 249.
+put line 246.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 251.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -778,17 +757,14 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
  [5]
+LaTeX Font Info:    Calculating math sizes for size <17> on input line 438.
 
-LaTeX Warning: Reference `fig:rig' on page 6 undefined on input line 399.
-
-LaTeX Font Info:    Calculating math sizes for size <17> on input line 436.
-
-Overfull \hbox (11.9159pt too wide) in paragraph at lines 435--440
+Overfull \hbox (11.9159pt too wide) in paragraph at lines 437--442
  []|[] 
  []
 
 
-Overfull \hbox (8.95113pt too wide) in paragraph at lines 442--448
+Overfull \hbox (8.95113pt too wide) in paragraph at lines 444--450
  []|[] 
  []
 
@@ -796,22 +772,22 @@ Overfull \hbox (8.95113pt too wide) in paragraph at lines 442--448
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-Overfull \hbox (2.75995pt too wide) in paragraph at lines 490--521
+Overfull \hbox (2.75995pt too wide) in paragraph at lines 492--523
 []$[]$ $[]$
  []
 
 
-Overfull \hbox (2.75995pt too wide) in paragraph at lines 522--555
+Overfull \hbox (2.75995pt too wide) in paragraph at lines 524--557
 []$[]$ $[]$
  []
 
 
-Overfull \hbox (2.75995pt too wide) in paragraph at lines 556--589
+Overfull \hbox (2.75995pt too wide) in paragraph at lines 558--591
 []$[]$ $[]$
  []
 
 
-Overfull \hbox (2.75995pt too wide) in paragraph at lines 591--623
+Overfull \hbox (2.75995pt too wide) in paragraph at lines 593--625
 []$[]$ $[]$ 
  []
 
@@ -825,7 +801,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 648--673
+Underfull \hbox (badness 10000) in paragraph at lines 650--675
 []
  []
 
@@ -842,86 +818,82 @@ Missing character: There is no ° in font ptmr7t!
 Underfull \vbox (badness 1701) has occurred while \output is active []
 
  [10])
-<Appendix.pdf, id=246, 614.295pt x 794.97pt>
+<Appendix.pdf, id=251, 614.295pt x 794.97pt>
 File: Appendix.pdf Graphic file (type pdf)
  <use Appendix.pdf>
-Package pdftex.def Info: Appendix.pdf used on input line 706.
+Package pdftex.def Info: Appendix.pdf used on input line 708.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Appendix.pdf Graphic file (type pdf)
 
 <use Appendix.pdf>
-Package pdftex.def Info: Appendix.pdf used on input line 706.
+Package pdftex.def Info: Appendix.pdf used on input line 708.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Appendix.pdf Graphic file (type pdf)
  <use Appendix.pdf>
-Package pdftex.def Info: Appendix.pdf used on input line 706.
+Package pdftex.def Info: Appendix.pdf used on input line 708.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
  [11
 
 ]
-<Appendix.pdf, id=256, page=1, 614.295pt x 794.97pt>
+<Appendix.pdf, id=262, page=1, 614.295pt x 794.97pt>
 File: Appendix.pdf Graphic file (type pdf)
 
 <use Appendix.pdf, page 1>
-Package pdftex.def Info: Appendix.pdf, page1 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page1 used on input line 708.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Appendix.pdf Graphic file (type pdf)
  <use Appendix.pdf, page 1>
-Package pdftex.def Info: Appendix.pdf, page1 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page1 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: Appendix.pdf Graphic file (type pdf)
 
 <use Appendix.pdf, page 1>
-Package pdftex.def Info: Appendix.pdf, page1 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page1 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: Appendix.pdf Graphic file (type pdf)
  <use Appendix.pdf, page 1>
-Package pdftex.def Info: Appendix.pdf, page1 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page1 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: Appendix.pdf Graphic file (type pdf)
 
 <use Appendix.pdf, page 1>
-Package pdftex.def Info: Appendix.pdf, page1 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page1 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [12
 
  <./Appendix.pdf>]
-<Appendix.pdf, id=278, page=2, 614.295pt x 794.97pt>
+<Appendix.pdf, id=283, page=2, 614.295pt x 794.97pt>
 File: Appendix.pdf Graphic file (type pdf)
 
 <use Appendix.pdf, page 2>
-Package pdftex.def Info: Appendix.pdf, page2 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page2 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: Appendix.pdf Graphic file (type pdf)
  <use Appendix.pdf, page 2>
-Package pdftex.def Info: Appendix.pdf, page2 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page2 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: Appendix.pdf Graphic file (type pdf)
 
 <use Appendix.pdf, page 2>
-Package pdftex.def Info: Appendix.pdf, page2 used on input line 706.
+Package pdftex.def Info: Appendix.pdf, page2 used on input line 708.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [13 <./Appendix.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 710.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 710.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 712.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 712.
  (./Preliminary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 710.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 710.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 712.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 712.
 Package rerunfilecheck Info: File `Preliminary.out' has not changed.
 (rerunfilecheck)             Checksum: 97081C58B58F161B08F1ECBB68B0AE40;832.
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 10833 strings out of 493117
- 163631 string characters out of 6135433
+ 10831 strings out of 493117
+ 163608 string characters out of 6135433
  338565 words of memory out of 5000000
- 14018 multiletter control sequences out of 15000+600000
+ 14016 multiletter control sequences out of 15000+600000
  53033 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,21n,46p,1862b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,21n,46p,1176b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/loca
 l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local
@@ -946,10 +918,10 @@ latino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utm
 b8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
 /usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local
 /texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Preliminary.pdf (13 pages, 3584201 bytes).
+Output written on Preliminary.pdf (13 pages, 3584312 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 324 compressed objects within 4 object streams
+ 380 PDF objects out of 1000 (max. 8388607)
+ 329 compressed objects within 4 object streams
  81 named destinations out of 1000 (max. 500000)
  148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

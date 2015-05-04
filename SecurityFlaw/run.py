@@ -35,6 +35,37 @@ from demos import cmd
 from numpy import median
 
 
+class ABCD():
+
+  def __init__(self, before, after):
+    self.actual = before
+    self.predicted = after
+    self.TP, self.TN, self.FP, self.FN = 0, 0, 0, 0
+    self.abcd()
+
+  def abcd(self):
+    for a, b in zip(self.actual, self.predicted):
+      if a == b:
+        if b == 1:
+          self.TP += 1
+        else:
+          self.TN += 1
+      else:
+        if b == 1:
+          self.FP += 1
+        else:
+          self.FN += 1
+
+  def all(self):
+    Sen = self.TP / (self.TP + self.FN)
+    Spec = self.TN / (self.TN + self.FP)
+    Prec = self.TP / (self.TP + self.FP)
+    Acc = (self.TP + self.TN) / (self.TP + self.FN + self.TN + self.FP)
+    F1 = 2 * self.TP / (2 * self.TP + self.FP + self.FN)
+    g = 2 * Sen * Spec / (Sen + Spec)
+    return Sen, Spec, Prec, Acc, F1, g
+
+
 class predictor():
 
   def __init__(
@@ -85,8 +116,8 @@ class predictor():
     if self.smoteit:
       self.train = SMOTE(
           self.train,
-          atleast=1,
-          atmost=301,
+          atleast=50,
+          atmost=100,
           resample=self.duplicate)
 
     if not self.tuning:
@@ -147,6 +178,8 @@ class fileHandler():
     sen = []
     spec = []
     prec = []
+    f = []
+    g = []
     chunks = lambda l, n: [l[i:i + n] for i in range(0, len(l), int(n))]
     from random import shuffle, sample
     rows = data._rows
@@ -165,46 +198,71 @@ class fileHandler():
       actual = test_df[
           test_df.columns[-2]].astype('float32').tolist()
       before = predictor(train=train, test=test).rforest()
-      acc.append(_Abcd(before=actual, after=before)[0])
-      sen.append(_Abcd(before=actual, after=before)[1])
-      spec.append(_Abcd(before=actual, after=before)[2])
-      prec.append(_Abcd(before=actual, after=before)[-3])
+      acc.append(ABCD(before=actual, after=before).all()[3])
+      sen.append(ABCD(before=actual, after=before).all()[0])
+      spec.append(ABCD(before=actual, after=before).all()[1])
+      prec.append(ABCD(before=actual, after=before).all()[2])
+      f.append(ABCD(before=actual, after=before).all()[-2])
+      g.append(ABCD(before=actual, after=before).all()[-1])
       sqe.insert(k, testRows)
-    return acc, sen, spec, prec
+    return acc, sen, spec, prec, f, g
 
-  def crossval(self, k=2):
-    cv_acc = ['          Accuracy  ']
-    cv_prec = ['         Precision  ']
+  def crossval(self, _s=True, k=2):
+    cv_acc = ['            Accuracy']
+    cv_prec = ['           Precision']
     cv_sen = ['Sensitivity (Recall)']
     cv_spec = ['         Specificity']
+    cv_f = ['                   f']
+    cv_g = ['                   g']
     for _ in xrange(k):
       proj = self.explorer2()
-      data = createTbl(proj, isBin=False, _smote=True)
-      a, b, c, d = self.kFoldCrossVal(data, k=k)
+      data = createTbl(proj, isBin=False, _smote=_s)
+      a, b, c, d, e, f = self.kFoldCrossVal(data, k=k)
       cv_acc.extend(a)
       cv_sen.extend(b)
       cv_spec.extend(c)
       cv_prec.extend(d)
-    return cv_acc, cv_sen, cv_spec, cv_prec
+      cv_f.extend(e)
+      cv_g.extend(f)
+    return cv_acc, cv_sen, cv_spec, cv_prec, cv_f, cv_g
 
 
 def _doCrossVal():
-  cv_acc = []
-  cv_sen = []
-  cv_spec = []
-  cv_prec = []
-  a, b, c, d = fileHandler().crossval(k=5)
-  cv_acc.append(a)
-  cv_sen.append(b)
-  cv_spec.append(c)
-  cv_prec.append(d)
-# print(r'### Precision')
-  rdivDemo(cv_acc, isLatex=False)
+
+  for smote in [True, False]:
+    cv_acc = []
+    cv_sen = []
+    cv_spec = []
+    cv_prec = []
+    cv_f = []
+    cv_g = []
+    acc, sen, spec, prec, f, g = fileHandler().crossval(_s=smote, k=5)
+    cv_acc += acc
+    cv_sen += sen
+    cv_spec += spec
+    cv_prec += prec
+    cv_f += f
+    cv_g += g
+
+  # print(r'### Precision')
+    try:
+      rdivDemo([cv_prec,
+                cv_sen,
+                cv_spec,
+                cv_acc,
+                cv_f,
+                cv_g],
+               isLatex=False)
+    except:
+      set_trace()
 # print(r'### Sensitivity')
-  rdivDemo(cv_sen, isLatex=False)
+#   rdivDemo(cv_sen, isLatex=False)
 # print(r'### Sensitivity')
-  rdivDemo(cv_spec, isLatex=False)
-  rdivDemo(cv_prec, isLatex=False)
+#   rdivDemo(cv_spec, isLatex=False)
+#   rdivDemo(cv_prec, isLatex=False)
+#
+#   rdivDemo(cv_f, isLatex=False)
+#   rdivDemo(cv_g, isLatex=False)
 
 if __name__ == '__main__':
   _doCrossVal()

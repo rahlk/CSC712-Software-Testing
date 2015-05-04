@@ -130,6 +130,15 @@ class diffEvol(object):
     #     set_trace()
     return self.model.depen(one) > self.model.depen(two)
 
+  def dominates2(self, one, two):
+    "Binary Domination"
+    #     set_trace()
+    return self.model.depen(
+        one)[0] > self.model.depen(
+        two)[0] and self.model.depen(
+        one)[1] > self.model.depen(
+        two)[1]
+
   def sortbyscore(self):
    #    front = []
    #    for f in self.frontier:
@@ -146,26 +155,33 @@ class diffEvol(object):
     while lives > 0 and iter < 30:
       better = False
       self.xbest = self.sortbyscore()[0]
-      for pos, val in enumerate(self.frontier):
+#       print('Iter = %d' % (iter))
+      for pos in xrange(len(self.frontier)):
         iter += 1
+#         print('Pos: %d' % (pos))
+#         set_trace()
         lives -= 1
-        l1, l2 = self.one234(val, self.frontier)
+        l1, l2 = self.one234(self.frontier[pos], self.frontier)
         new = self.extrapolate(self.xbest, l1, l2)
-        if self.dominates(new, val):
+        if self.dominates2(new, self.frontier[pos]):
           self.frontier.pop(pos)
           self.frontier.insert(pos, new)
           better = True
           lives += 1
-          print(lives)
+#           print('!')
+#           print(lives)
           if self.model.depen(new) > self.model.depen(self.xbest):
             self.xbest = new
           # print(self.model.depen(new))
-        elif self.dominates(val, new):
-          lives -= 1
-          print(lives)
+        elif self.dominates2(self.frontier[pos], new):
+          #           lives -= 1
+          #           print('.')
+          #           print(lives)
           better = False
-          if self.model.depen(val) > self.model.depen(self.xbest):
-            self.xbest = val
+          if self.model.depen(
+                  self.frontier[pos]) > self.model.depen(
+                  self.xbest):
+            self.xbest = self.frontier[pos]
           # print(self.model.depen(new))
         else:
           self.frontier.append(new)
@@ -173,8 +189,11 @@ class diffEvol(object):
             self.xbest = new
           better = True
           lives += 1
-          print(lives)
-        print('Iter = %d' % (iter))
+#           print(
+#               'Non-Dominant. Lives: %d. Frontier Size= %d' %
+#               (lives, len(
+#                   self.frontier)))
+#           self.frontier = self.sortbyscore()[:10]
 
 #      print(self.model.depen(self.xbest))
     return self.xbest
@@ -196,7 +215,8 @@ class tuneRF(object):
   def depen(self, rows):
     mod = rforest(self.train, self.test, tunings=rows, smoteit=True)
     prec = ABCD(before=Bugs(self.test), after=mod).all()[2]
-    return prec
+    pdpf = ABCD(before=Bugs(self.test), after=mod).all()[:2]
+    return pdpf
 
   def indep(self):
     return [(50, 150)  # n_estimators
@@ -295,7 +315,7 @@ def tuner(model, data):
 
 if __name__ == '__main__':
   from timeit import time
-  data = explore(dir='../Data/')[0][3]  # Only training data to tune.
+  data = explore(dir='../Data/')[0][5]  # Only training data to tune.
   print(data)
 #   set_trace()
   for m in [tuneRF]:

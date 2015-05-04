@@ -11,7 +11,7 @@ sys.path.extend([axe, pystat, cwd])
 from table import clone
 from random import choice, seed as rseed, random as rand
 import pandas as pd
-
+import methods1
 
 def SMOTE(data=None, k=5, atleast=10, atmost=51, bugIndx=2, resample=False):
 
@@ -81,22 +81,24 @@ def SMOTE(data=None, k=5, atleast=10, atmost=51, bugIndx=2, resample=False):
   newCells = []
   rseed(1)
   unique, counts = minority(data)
+  atmost = min(counts)
   rows = data._rows
   for u, n in zip(unique, counts):
-    if n < atleast:
-      newCells.extend(populate([r for r in rows if r.cells[-2] == u]))
+   # if n < atleast:
+    #  newCells.extend(populate([r for r in rows if r.cells[-2] == u]))
     if n > atmost:
-      newCells.extend(depopulate([r for r in rows if r.cells[-2] == u]))
+      newCells.extend(depopulate([r for r in rows if r.cells[-1] == u]))
     else:
-      newCells.extend([r for r in rows if r.cells[-2] == u])
+      newCells.extend([r for r in rows if r.cells[-1] == u])
 
   return clone(data, rows=[k.cells for k in newCells])
 
 
 def test_smote():
-  dir = '../Data/camel/camel-1.6.csv'
-  Tbl = createTbl([dir], _smote=False)
-  newTbl = createTbl([dir], _smote=True)
+  dir = './Data/log.csv'
+  Tbl = methods1.createTbl([dir], _smote=False)
+  newTbl = methods1.createTbl([dir], _smote=True)
+  set_trace()
   print(len(Tbl._rows), len(newTbl._rows))
   # for r in newTbl._rows:
   #   print r.cells

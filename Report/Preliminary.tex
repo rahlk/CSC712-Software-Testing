@@ -56,7 +56,7 @@
  \maketitle 
 %  \IEEEcompsoctitleabstractindextext{%
     \begin{abstract}
-      Programming inherently introduces defects into programs, as a result software systems can crash or fail to deliver an important functionality. It is very important to test a software throughly before it can be used. But an extensive testing can be prohibitively expensive or may take too much time to conduct This necessitates the use of automated software defect prediction tools. Although numerous machine learning algorithms are available to detect defects in software, but several factors undermine the accuracy of such algorithm. This paper uses Classification and Regression Trees (CART) and Random Forests to examines two approaches to counter the aforementioned problem. The first approach involves the use Synthetic Minority Oversampling Technique (also known as SMOTE). The second approach attempts to use a metaheursitic algorithm such as differential evolution to find the right set of parameters that can change the performance of the predictor. 
+      Programming inherently introduces defects into programs, as a result software systems can crash or fail to deliver an important functionality. It is very important to test a software throughly before it can be used. But an extensive testing can be prohibitively expensive or may take too much time to conduct. This necessitates the use of automated software defect prediction tools. Although numerous machine learning algorithms are available to detect defects in software, several factors undermine the accuracy of such algorithm. This paper uses Classification and Regression Trees (CART) and Random Forests to examines two approaches to counter the aforementioned problem. The first approach involves the use Synthetic Minority Oversampling Technique (also known as SMOTE). The second approach attempts to use a metaheursitic algorithm such as differential evolution to find the right set of parameters that can change the performance of the predictor. 
     \end{abstract}
     
     \begin{IEEEkeywords}
@@ -66,14 +66,16 @@
 %\maketitle
 
 \section{Introduction} \label{intro}
-Defect prediction is the study of identifying which software \textit{modules} are defective. Modules refer to some premitive units of an operating systems, like funtions or classes. It needs to be pointed out that early identification of possible defects can lead to a significant reduction in construction costs. No software is developed in a single day, or by just one person, rather it is constructed over time with old modules being extensively reused. Therefore, the sooner defects can be detected and fixed, the less rework is required for development. Boehm and Papaccio~\cite{boehm88} for instance mention that reworking software early in its life-cycle is far more cost effective (\textit{by a factor of almost 200}) than doing so later in it's life cycle. This effect has also been reported by several other studies. In their study, Shull \textit{et al.}~\cite{shull2002we} report that finding a repairing severe software defects is often hudereds of times cheaper if done during the requirements and design phase than doing so after the release. In fact, they claim that \textit{``About 40-50\% of user programs enter use with
+Defect prediction is the study of identifying which software \textit{modules} are defective. Modules refer to some premitive units of an operating systems, like funtions or classes. It needs to be pointed out that early identification of possible defects can lead to a significant reduction in construction costs. No software is developed in a single day, or by just one person, rather it is constructed over time with old modules being extensively reused. Therefore, the sooner defects can be detected and fixed, the less rework is required for development. Boehm and Papaccio~\cite{boehm88} for instance mention that reworking software early in its life-cycle is far more cost effective (\textit{by a factor of almost 200}) than doing so later in it's life cycle. This effect has also been reported by several other studies. In their study, Shull \textit{et al.}~\cite{shull2002we} report that finding and repairing severe software defects is often hudereds of times cheaper if done during the requirements and design phase than doing so after the release. In fact, they claim that \textit{``About 40-50\% of user programs enter use with
   nontrivial defects.''}. Authur \textit{et al.} \cite{arthur99} conducted a controlled study with a few engineers at NASA's Langley Research Center, they found the group with a specialized verification team found, (a) More issues, (b) Found them early, which directly translates to lower costs to fix, see~\cite{dabney2006predicting}. 
 
-All this leads use to one key conclusion: \textit{Find Bugs Early!} For this we need efficient code analysis measures. We also want them to be generic in that they must be applicable across several projects. Moreover, platforms such as github has over 9 million users, hosting over 21.1 million repositories. Faced with such a massive code base we need these to also be easy to compute. Static code measure is one such tool, it can automatically extracted from a code base with very little effort even for very large software systems~\cite{nagappan2005static}. Such measures reduce the effort required for defect prediction. As \cite{tosun2010ai} and \cite{ostrand2004bugs} have shown, if inspection teams used defect predictors to identify  issues, they can find 80\% to 88\% of the defects after inspecting only 20\% to 25\% of the code. With these code analysis measures, we can make use of classification tools form machine learning, such as CART and Random Forest, to detect the presence of defects. However, notice the skewness in the above result, \textit{ 80\% of the problems reside in only 20\% of the modules}. This is a key difficulty often faced in software defect prediction. In other words we are trying to predict the occurrence of a defect in a software most of whose modules work just fine. Therefore the classification tool that is used is quite often unable to detect the faulty modules. This is a very well known issue faced by several machine learning experts and is referred to as class imbalanced in datasets. A data set that is heavily skewed toward the majority class will sometimes generate classifiers that never predict the minority class. In software defect prediction, this bias often makes the classifier highly accurate in predicting non-defects, and totally useless for predicting defects.
+All this leads use to one key conclusion: \textit{Find Bugs Early!} For this we need efficient code analysis measures. We also want them to be generic, in that they must be applicable across several projects. Moreover, platforms such as github has over 9 million users, hosting over 21.1 million repositories. Faced with such a massive code base we need these to also be easy to compute. Static code measure is one such tool, it can be automatically extracted from a code base with very little effort even for very large software systems~\cite{nagappan2005static}. Such measures reduce the effort required for defect prediction. As \cite{tosun2010ai} and \cite{ostrand2004bugs} have shown, if inspection teams used defect predictors to identify  issues, they can find 80\% to 88\% of the defects after inspecting only 20\% to 25\% of the code. 
 
-One of the other issues in data mining is the choice of parameters that run these classification tools. The parameters of these data miners are rarely tested for the application they are being applied for. A common notion among it's users is that the space of options for these parameters has been well explored by experts and the best settings have been used. This is not necessarily true and that brings us to the research question that this paper tries to answer:
+With these code analysis measures, we can make use of classification tools form machine learning to detect the presence of defects. However, notice the skewness in the above result, \textit{ 80\% of the problems reside in only 20\% of the modules}. This is a key difficulty often faced in software defect prediction. In other words we are trying to predict the occurrence of a defect in a software most of whose modules work just fine. Therefore the classification tool that is used is quite often unable to detect the faulty modules. This is a very well known issue faced by several machine learning experts and is referred to as class imbalanced in datasets. A data set that is heavily skewed toward the majority class will sometimes generate classifiers that never predict the minority class. In software defect prediction, this bias often makes the classifier highly accurate in predicting non-defects, and totally useless for predicting defects.
+
+One of the other issues in data mining is the choice of parameters that run these classification tools. The parameters of these data miners are rarely tested for the application they are being applied for. A common notion among it's users is that the space of options for these parameters has been well explored by experts and the best settings have been used. This is not necessarily true and that brings us to the research questions that this paper tries to answer:
 \begin{itemize}
-\item[] {\bfseries RQ1:  Can over/under sampling techniques such as SMOTE to improve prediction accuracy for defect prediction?}
+\item[] {\bfseries RQ1:  Can over/under sampling techniques such as SMOTE be used to improve prediction accuracy for defect prediction?}
 \item[] {\bfseries RQ2: Does Tuning a data miner improve it's prediction accuracy?}
 \item[] {\bfseries RQ3: Is tuning performed in conjunction with SMOTE any better than either one performed alone?}
 \item[] {\bfseries RQ4: Is the SMOTE\textit{ing} technique limited only to defect prediction?}
@@ -81,7 +83,7 @@ One of the other issues in data mining is the choice of parameters that run thes
 
 
 
-The rest of this paper is organized as follows--- Section \ref*{motivation} offers a small ilustration of the impact of SMOTE and tuning on the accuracy of the predictor. Section \ref*{back} highlights the underlying principles used in this paper. Section \ref{setup} presents the experimental setup followed by section \ref{expt} which presents the experimental results and discuss each one. Section \ref{concl} contains concluding remarks and finally section \ref{future} talks about the future work.\\[-1cm]
+The rest of this paper is organized as follows--- Section \ref{back} highlights the underlying principles used in this paper. Section \ref{data} introduces the datasets used. Section \ref{setup} presents the experimental setup followed by section \ref{expt} whichents the experimental results and discuss each one. Section \ref{concl} contains concluding remarks.\\[-1cm]
 
 \begin{figure}[tbp!]
 	
@@ -127,7 +129,7 @@ The rest of this paper is organized as follows--- Section \ref*{motivation} offe
 
 This section briefly highlights the essential tools and methodologies discussed in this paper. Topics include Defect Prediction and Tuning with Differential Evolution.
 \subsection{Defect Prediction}
-The previous section presented key finding from literature that seem to conclude that defect prediction is quite important. This section introduces the idea of using instance based approach to identify defects. Assessing the quality of solutions to a real-world problem can be extremely hard~\cite{menzies2005xomo}. In several software engineering applications, researchers have models that can emulate the problem, for instance there is the COCOMO effort model~\cite[p29-57]{boehm2009software}, the COQUALMO defect model~\cite[p254-268]{boehm2009software}, Madachy’s schedule risk model~\cite[p284-291]{boehm2009software}, to name a few. Using these models it is possible to examine several scenarios in a short period of time, and this can be done in a reproducible manner. However, models aren't always the solution, as we shall see. 
+The previous section presented key findings from literature that seem to conclude that defect prediction is quite important. This section introduces the idea of using instance based approach to identify defects. Assessing the quality of solutions to a real-world problem can be extremely hard~\cite{menzies2005xomo}. In several software engineering applications, researchers have models that can emulate the problem, for instance there is the COCOMO effort model~\cite[p29-57]{boehm2009software}, the COQUALMO defect model~\cite[p254-268]{boehm2009software}, Madachy’s schedule risk model~\cite[p284-291]{boehm2009software}, to name a few. Using these models it is possible to examine several scenarios in a short period of time, and this can be done in a reproducible manner. However, models aren't always the solution, as we shall see. 
 
 There exist several problems where models are hard to obtain, or the input and output are related by complex connections that simply cannot be modeled in a reliable manner, or generation of reliable models take prohibitively long~\cite{Ludewig2003}. Software defect prediction is an excellent example of such a case. Models that incorporate all the intricate issues that may lead defects in a product is extremely hard to come by. Moreover, it has been shown that models for different regions within the same data can have very different properties \cite{localvsglobal}. This makes it extremely hard for one to design planning systems that are capable of mitigating these defects.
 
@@ -342,7 +344,7 @@ a different {\em Goal}$^2$).  Technically, this makes a  {\em single objective} 
 
 
 
-\section{Data Sets}
+\section{Data Sets} \label{data}
 
 The following section describes the experimental rig and the experiments used to measure the performance of the defect predictors on 8 data sets. And, 1 security flaw dataset.
 
@@ -391,12 +393,12 @@ The attributes of the datasets being used have been summarized in figure \ref{fi
 
 \subsection{Bugzilla Flaw Dataset}
 
-To perform our replication, there is a need to collect a large number of stack traces from the Firefox product. Unfortunately, because of the requirement to use a historical set of traces due to security data availability, we could not make use of Mozilla’s primary stack trace data website, Mozilla Crash Reports\footnote{\url{https://crash-stats.mozilla.com/home/products/Firefox}}. Instead, we made use of the historical dumps\footnote{\url{https://crash-analysis.mozilla.com/crash_analysis/}}. This historical dataset contains a random sampling of stack trace data (approximately 10\% of the crashes seen by the crash reporting system), sorted by day. We performed our analysis on crashes occurring from May 2010 to March 2012 due to the available security data. These dumps do not contain the entirety of the stack trace; rather, only the topmost filename is included in each trace. We further pruned the dataset to only crashes on the first of every month in the time period. In the end, 1,013,770 occurrences of files in stack traces were recorded.
+To perform replication studies, there is a need to collect a large number of stack traces from the product, which in this case is firefox. Unfortunately, because of the requirement to use a historical set of traces due to security data availability, we could not make use of Mozilla’s primary stack trace data website, Mozilla Crash Reports\footnote{\url{https://crash-stats.mozilla.com/home/products/Firefox}}. Instead, the historical dumps\footnote{\url{https://crash-analysis.mozilla.com/crash_analysis/}} were used. This historical dataset contains a random sampling of stack trace data (approximately 10\% of the crashes seen by the crash reporting system), sorted by day. The analysis were performed on crashes occurring from May 2010 to March 2012 due to the available security data. These dumps do not contain the entirety of the stack trace; rather, only the topmost filename is included in each trace. We further pruned the dataset to only crashes on the first of every month in the time period. In the end, 1,013,770 occurrences of files in stack traces were recorded.
 
-\section{Experimental Setup}
+\section{Experimental Setup} \label{setup}
 \subsection{The Rig}
 
-The experimental rig is shown in Figure \ref{fig:rig}. It uses an \textit{oracle} to determine weather a certain test case is defective or not. The oracle has 2 components namely, the trainer and the prediction tool. The trainer is either SMOTE, or DE, or both.
+The experimental rig uses an \textit{oracle} to determine weather a certain test case is defective or not. The oracle has 2 components namely, the trainer and the prediction tool. The trainer is either SMOTE, or DE, or both.
 
 \subsection{Statistical Measures} \label{stats}
 Let $\{A,B,C,D\}$ denote the
@@ -465,17 +467,17 @@ The research conducted by Shepperd and MacDonell~\cite{shepperd12a}, Kampenes~\c
 
 
 \section{Experimental Results}
-
-This section discusses the experimental results for the experiments. In particular, it broken down into 2 experiments. Experiment 1, deals with the defect dataset, an answers \textbf{RQ1, RQ2, and RQ3}, while Experiment 2 deals with the security flaw data set and answers \textbf{RQ4}. The \textbf{Research Questions \textit{(RQs)}} can be found in section \ref{intro}.
+\label{expt}
+This section discusses the experimental results for the experiments. In particular, it is broken down into 2 experiments. Experiment 1, deals with the defect dataset, an answers \textbf{RQ1, RQ2, RQ3}, while Experiment 2 deals with the security flaw data set and answers \textbf{RQ4}. The \textbf{Research Questions \textit{(RQs)}} can be found in section \ref{intro}.
 
 \subsection*{Experiment 1: Defect Dataset} \label{exp1}
 
-The defect dataset we prepared as mentioned in the previous section. In total there were 8 datasets. There were 23 columns in each dataset. The first 22 columns each correspond to the CK and OO metrics, highlighted in Figure \ref{fig:ck}. The data is split into training and testing, figure \ref{fig:attr} shows the version used in each data set for this. Following this, each dataset was process with the following treatments:
+The defect dataset was prepared as mentioned in the previous section. In total there were 8 datasets. There were 23 columns in each dataset. The first 22 columns each correspond to the CK and OO metrics, highlighted in Figure \ref{fig:ck}, the last column was the defects. The data is split into training and testing, figure \ref{fig:attr} shows the version used in each data set for this. Following this, each dataset was processed with the following treatments:
 \begin{itemize}
 \item CART was trained with the training data and defects were predicted from the testing data. All statistical measures, see section \ref{stats}, were obtained by comparing the original with the prediction.
 \item Likewise, Random Forest was used to do the same process.
 \item Differential Evolution was used to tune the attributes of RF and CART. Then the predictions were obtained using the tuned predictors. \\ \textit{Note: tuning was done with only the training dataset, the test dataset remains unseen by the predictors.}
-\item Then, for the \textit{untuned} CART and Random Forest, the training data was treated by SMOTE\textit{ing} them and the statistical measures were obtained.
+\item Then, for the \textit{untuned} CART and Random Forest, the training data was treated by SMOTE\textit{ing} and the statistical measures were obtained.
 \item Lastly, the predictors were \textit{Tuned} and training data was SMOTE\textit{ed} prior to using the predictors.
  
 \end{itemize}
@@ -639,7 +641,7 @@ With respect to the 4 datasets where it does work, there is a possibility that t
 
 {{\bfseries RQ3: Is tuning performed in conjunction with SMOTE any better than either one performed alone?}\textit{Yes.}}
 
-This is a particularly interesting result. In 5 out of the 8 dataset, the use of both as beneficial. In ant RF+SMOTE+Tune is almost as good as RF+SMOTE, and definitely better than plain RF. Similarly, in ivy, poi, synapse and xalan the results hold true. 
+This is a particularly interesting result. In 5 out of the 8 datasets, the use of both as beneficial. In ant RF+SMOTE+Tune is almost as good as RF+SMOTE, and definitely better than plain RF. Similarly, in ivy, poi, synapse and xalan the results hold true. 
 
 Note that, with the exception of jedit, using tools such as DE and SMOTE to prepare both the predictor and the training data is beneficial.
 
@@ -689,7 +691,7 @@ As was reported in the previous papers, a simple Random Forest on the dataset wi
 However, once the data was preprocessed by undersampling the majority class, the prediction performance improved drastically. In fact, the specificity, which measures the probability of security flaw given the predictor tests positive, rose from just 0.08 (80\%) before sampling to 0.81 (81\%) after sampling. That's an order of magnitude better. 
  
 \section{Conclusions}
-
+\label{concl}
 This work has shown that the use of off-the-shelf predictors is not a wise approach for software defect prediction. The results show that one must reflect on the nature of the data they are handling and the reason a specific predictor is being used. In general, result have seem to conclude that one of the tree based classifier RF is better than the other. In addition, use of a preprocessing tool to prepare the dataset and a mechanism to determine the attributes of a classifier are important. More importantly, the use of both in general is also quite beneficial. It is true that the data sets being handled here are open-source projects that may not have adhered to any strict development strategy, this adds another dimension to what causes defects. This can't be handled by machine learning. It is therefore advisable that one conduct as test such as this to see what the best approach to defect prediction. A strong statistical reasoning is also pertinent to making managerial decision regarding a project.
 
 Another purpose of this paper was to test if the sampling helps improve security flaws. The results are very positive and further affirm the need for data preprocessing before any sort of predictive analytics is performed.
